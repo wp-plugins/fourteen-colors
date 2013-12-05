@@ -174,7 +174,8 @@ function fourteen_colors_rebuild_accent_colors() {
 	set_theme_mod( 'accent_mid',   fourteen_colors_accent_mid()   );
 	set_theme_mod( 'accent_light', fourteen_colors_accent_light() );
 }
-add_action( 'update_option_theme_mods_twentyfourteen', 'fourteen_colors_rebuild_accent_colors' );
+$fourteen_theme = get_stylesheet();
+add_action( "update_option_theme_mods_$fourteen_theme", 'fourteen_colors_rebuild_accent_colors' );
 
 /**
  * Output the CSS for the Contrast Color option.
@@ -211,7 +212,7 @@ function fourteen_colors_contrast_color_styles() {
 	';
 	
 	/* Adjustents to make lighter Contrast Colors looks just as good. */
-	if( fourteen_colors_color_intensity( $contrast_color ) > 400 ) {
+	if( fourteen_colors_color_value( $contrast_color ) > 400 ) {
 		$css .= '	
 			#secondary,
 			#secondary a,

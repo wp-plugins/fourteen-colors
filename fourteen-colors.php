@@ -242,6 +242,10 @@ function fourteen_colors_contrast_color_styles() {
 			.slider-control-paging a:before {
 				background-color: rgba(0,0,0,.33);
 			}
+			
+			.featured-content {
+				background-image: url(' . plugins_url( '/pattern-dark-inverse.svg', __FILE__ ) . ');
+			}
 
 			.widget-title, .widget-title a {
 				color: #000;

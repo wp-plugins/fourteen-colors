@@ -196,30 +196,51 @@ function fourteen_colors_contrast_color_styles() {
 	$css = '/* Custom Contrast Color */
 	.site:before,
 	.site-header,
-	.site-footer {
+	.site-footer,
+	.featured-content,
+	.featured-content .entry-header,
+	.slider-direction-nav a {
 		background-color: ' . $contrast_color . ';
 	}
+	
+	.grid .featured-content .entry-header {
+		border-color: ' . $contrast_color . ';
+	}
+	
+	.slider-control-paging a:before {
+		background-color: rgba(255,255,255,.33);
+	}
+	
 	.hentry .mejs-mediaelement, .hentry .mejs-container .mejs-controls,
 	.content-sidebar .widget_twentyfourteen_ephemera .widget-title:before {
 		background: ' . $contrast_color . ';
 	}
+	
 	.content-sidebar .widget .widget-title {
 		border-top-color: ' . $contrast_color . ';
 	}
+	
 	.hentry .mejs-controls .mejs-time-rail .mejs-time-total, .hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
 		background: rgba(255,255,255,.8);
 	}
 	';
 	
 	/* Adjustents to make lighter Contrast Colors looks just as good. */
-	if( fourteen_colors_color_value( $contrast_color ) > 400 ) {
+	if( fourteen_colors_color_value( $contrast_color ) > 480 ) {
 		$css .= '	
 			#secondary,
 			#secondary a,
 			.site-header a,
 			.site-footer,
-			.site-footer a {
+			.site-footer a,
+			.featured-content a,
+			.featured-content .entry-meta,
+			.slider-direction-nav a:before {
 				color: #2b2b2b;
+			}
+
+			.slider-control-paging a:before {
+				background-color: rgba(0,0,0,.33);
 			}
 
 			.widget-title, .widget-title a {
@@ -300,7 +321,7 @@ function fourteen_colors_accent_color_styles() {
 		.content-sidebar .widget input[type="submit"],
 		.slider-control-paging .slider-active:before,
 		.slider-control-paging .slider-active:hover:before,
-		.arrow-nav a:hover {
+		.slider-direction-nav a:hover {
 			background-color: ' . $accent_color . ';
 		}
 
@@ -394,7 +415,7 @@ function fourteen_colors_accent_color_styles() {
 			border-color: ' . $accent_mid . ';
 		}
 
-		.tag-links a:hover:before {
+		.entry-meta .tag-links a:hover:before {
 			border-right-color: ' . $accent_mid . ';
 		}
 

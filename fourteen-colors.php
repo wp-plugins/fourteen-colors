@@ -177,6 +177,12 @@ function fourteen_colors_rebuild_accent_colors() {
 $fourteen_theme = get_stylesheet();
 add_action( "update_option_theme_mods_$fourteen_theme", 'fourteen_colors_rebuild_accent_colors' );
 
+function fourteen_colors_styles() {
+	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css;', __FILE__ ) );
+}
+add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
+
+
 /**
  * Output the CSS for the Contrast Color option.
  *
@@ -195,6 +201,7 @@ function fourteen_colors_contrast_color_styles() {
 	// Add the CSS for implementing the contrast color.
 	$css = '/* Custom Contrast Color */
 	.site:before,
+	#secondary,
 	.site-header,
 	.site-footer,
 	.featured-content,
@@ -220,9 +227,6 @@ function fourteen_colors_contrast_color_styles() {
 		border-top-color: ' . $contrast_color . ';
 	}
 	
-	.hentry .mejs-controls .mejs-time-rail .mejs-time-total, .hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
-		background: rgba(255,255,255,.8);
-	}
 	';
 	
 	/* Adjustents to make lighter Contrast Colors looks just as good. */
@@ -235,12 +239,19 @@ function fourteen_colors_contrast_color_styles() {
 			.site-footer a,
 			.featured-content a,
 			.featured-content .entry-meta,
-			.slider-direction-nav a:before {
+			.slider-direction-nav a:before,
+			.hentry .mejs-container .mejs-controls .mejs-time span,
+			.hentry .mejs-controls .mejs-button button {
 				color: #2b2b2b;
+			}
+			
+			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded, 
+			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+				background-color: #2b2b2b;
 			}
 
 			.slider-control-paging a:before {
-				background-color: rgba(0,0,0,.33);
+				background-color: rgba(0, 0, 0, .33);
 			}
 			
 			.featured-content {
@@ -272,6 +283,11 @@ function fourteen_colors_contrast_color_styles() {
 
 			#supplementary + .site-info {
 				border-top: 1px solid rgba(0, 0, 0, 0.2);
+			}
+			
+			.hentry .mejs-controls .mejs-time-rail .mejs-time-total, 
+			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+				background: rgba(0,0,0,.3);
 			}
 		';
 	}
@@ -315,6 +331,7 @@ function fourteen_colors_accent_color_styles() {
 		input[type="submit"],
 		.search-toggle,
 		.hentry .mejs-controls .mejs-time-rail .mejs-time-current,
+		.mejs-overlay:hover .mejs-overlay-button,
 		.widget button,
 		.widget input[type="button"],
 		.widget input[type="reset"],
@@ -409,6 +426,7 @@ function fourteen_colors_accent_color_styles() {
 		.content-sidebar .widget a:hover,
 		.content-sidebar .widget .widget-title a:hover,
 		.content-sidebar .widget_twentyfourteen_ephemera .entry-meta a:hover,
+		.hentry .mejs-controls .mejs-button button:hover,
 		.site-info a:hover,
 		.featured-content a:hover {
 			color: ' . $accent_mid . ';

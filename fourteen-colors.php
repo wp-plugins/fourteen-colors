@@ -178,7 +178,7 @@ $fourteen_theme = get_stylesheet();
 add_action( "update_option_theme_mods_$fourteen_theme", 'fourteen_colors_rebuild_accent_colors' );
 
 function fourteen_colors_styles() {
-	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css;', __FILE__ ) );
+	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css', __FILE__ ) );
 }
 add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
 
@@ -235,6 +235,9 @@ function fourteen_colors_contrast_color_styles() {
 			#secondary,
 			#secondary a,
 			.site-header a,
+			.site-title a,
+			.site-title a:hover,
+			.menu-toggle:before,
 			.site-footer,
 			.site-footer a,
 			.featured-content a,
@@ -288,6 +291,10 @@ function fourteen_colors_contrast_color_styles() {
 			.hentry .mejs-controls .mejs-time-rail .mejs-time-total, 
 			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
 				background: rgba(0,0,0,.3);
+			}
+			
+			.mejs-overlay .mejs-overlay-button {
+				background-color: ' . $contrast_color . ';
 			}
 		';
 	}

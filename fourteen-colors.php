@@ -510,6 +510,30 @@ add_action( 'wp_head', 'fourteen_colors_accent_color_styles' );
 
 
 /*
+/**
+* Outputs the custom accent color CSS for the editor.
+/
+function twentyfourteen_customizer_editor_styles() {
+	$accent_color = get_theme_mod( 'accent_color' );
+	$accent_mid = get_theme_mod( 'accent_mid' );
+	echo '<style type="text/css">
+		a, a:vistited {
+			color: ' . $accent_color . ';
+		}
+		a:hover, a:focus {
+			color: ' . $accent_mid . ';
+		}
+		::-moz-selection {
+			background: ' . $accent_color . ';
+		}
+		::selection {
+			background: ' . $accent_color . ';
+		}
+	</style>';
+	}
+add_action( 'some_action_in_tinymce_head', 'twentyfourteen_customizer_editor_styles' );
+
+
 function fourteen_colors_regen_editor_styles() {
 	$file = plugin_dir_path( __FILE__ ) . 'editor-style.css';
 	$data = '.post-format-quote,.post-format-status,.post-format-audio a,.post-format-video a,.post-format-audio a:hover,.post-format-video a:hover{color:'.get_theme_mod('fourteen_colors_one').'}.post-format-aside,.post-format-link{background-color:'.get_theme_mod('fourteen_colors_one').'}a:active,a:hover,.post-format-status a{color:'.get_theme_mod('fourteen_colors_two').'}.post-format-gallery,.post-format-chat{background-color:'.get_theme_mod('fourteen_colors_two').'}.post-format-audio,.post-format-video{background-color:'.get_theme_mod('fourteen_colors_three').'}a:visited,a,.post-format-quote a{color:'.get_theme_mod('fourteen_colors_four').'}::selection{background-color:'.get_theme_mod('fourteen_colors_five').';}.post-format-chat a,.post-format-gallery a{color:'.get_theme_mod('fourteen_colors_six').'}.post-format-status{background-color:'.get_theme_mod('fourteen_colors_six').'}.wp-caption .wp-caption-text,.wp-caption-dd{color:'.get_theme_mod('fourteen_colors_seven').'}.post-format-quote{background-color:'.get_theme_mod('fourteen_colors_seven').'}body{color:'.get_theme_mod('fourteen_colors_eight').'}';

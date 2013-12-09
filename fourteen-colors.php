@@ -76,69 +76,7 @@ function fourteen_colors_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'fourteen_colors_customize_register' );
 
-/**
- * Tweak the brightness of a color by adjusting the RGB values by the given interval.
- *
- * Use positive values of $steps to brighten the color and negative values to darken the color.
- * All three RGB values are modified by the specified steps, within the range of 0-255. The hue
- * is generally maintained unless the number of steps causes one value to be capped at 0 or 255.
- *
- * @since Twenty Fourteen 1.0
- *
- * @param string $color The original color, in 3- or 6-digit hexadecimal form.
- * @param int $steps The number of steps to adjust the color by, in RGB units.
- * @return string $color The new color, in 6-digit hexadecimal form.
- */
-function fourteen_colors_adjust_color( $color, $steps ) {
-	// Convert shorthand to full hex.
-	if ( strlen( $color ) == 3 ) {
-		$color = str_repeat( substr( $color, 1, 1 ), 2 ) . str_repeat( substr( $color, 2, 1 ), 2 ) . str_repeat( substr( $color, 3, 1), 2 );
-	}
-
-	// Convert hex to rgb.
-	$rgb = array( hexdec( substr( $color, 1, 2 ) ), hexdec( substr( $color, 3, 2 ) ), hexdec( substr( $color, 5, 2 ) ) );
-
-	// Adjust color and switch back to 6-digit hex.
-	$hex = '#';
-	foreach ( $rgb as $value ) {
-		$value += $steps;
-		if ( $value > 255 ) {
-			$value = 255;
-		} elseif ( $value < 0 ) {
-			$value = 0;
-		}
-		$hex .= str_pad( dechex( $value ), 2, '0', STR_PAD_LEFT);
-	}
-
-	return $hex;
-}
-
-/**
- * Calculate the (lightness/darkness) value of a color, to determine whether it should be
- * used with a light or dark text color.
- *
- * @since Twenty Fourteen 1.0
- *
- * @param string $color The color, in 3- or 6-digit hexadecimal form.
- * @return int $value The value of the color, in cumulative RGB units.
- */
-function fourteen_colors_color_value( $color ) {
-	// Convert shorthand to full hex.
-	if ( strlen( $color ) == 3 ) {
-		$color = str_repeat( substr( $color, 1, 1 ), 2 ) . str_repeat( substr( $color, 2, 1 ), 2 ) . str_repeat( substr( $color, 3, 1), 2 );
-	}
-
-	// Convert hex to rgb.
-	$rgb = array( hexdec( substr( $color, 1, 2 ) ), hexdec( substr( $color, 3, 2 ) ), hexdec( substr( $color, 5, 2 ) ) );
-
-	// Sum rgb values.
-	$value = 0;
-	foreach ( $rgb as $one_value ) {
-		$value += $one_value;
-	}
-
-	return $value;
-}
+require( 'color-calculations.php' );
 
  /**
  * Returns a slightly lighter color than what is set as the theme's
@@ -206,7 +144,8 @@ function fourteen_colors_contrast_color_styles() {
 	.site-footer,
 	.featured-content,
 	.featured-content .entry-header,
-	.slider-direction-nav a {
+	.slider-direction-nav a,
+	.slider-control-paging {
 		background-color: ' . $contrast_color . ';
 	}
 	
@@ -507,6 +446,33 @@ add_action( 'wp_head', 'fourteen_colors_accent_color_styles' );
 //add_action( 'wp_enqueue_scripts', 'fourteen_colors_accent_color_styles' );
 
 
+// Temporary output of color contrast information:
+add_action( 'wp_footer', 'fourteen_colors_temp_footer' );
+function fourteen_colors_temp_footer() {
+	$contrast = get_theme_mod('contrast_color');
+	$accent = get_theme_mod('accent_color');
+	
+	echo '<div style="position:fixed; top:0; left: 50%; margin:0 0 0 -50px; padding: 12px 16px; background: #222; color:#f33; width:200px; z-index:5;">';
+	echo 'Contrast Color: ' . $contrast . '<br>';
+//	echo 'Contrast Color: ' . print_r( fourteen_colors_hex2rgb( $contrast ) ) . '<br>';
+//	echo 'White: ' . print_r( fourteen_colors_hex2rgb( '#fff' ) ) . '<br>';
+//	echo 'Contrast Luminance: ' . fourteen_colors_relative_luminance($contrast) . '<br>';
+	echo 'Accent Color: ' . $accent . '<br><br>';
+//	echo 'Accent Color: ' . print_r( fourteen_colors_hex2rgb( $accent ) ) . '<br>';
+//	echo 'Accent Luminance: ' . fourteen_colors_relative_luminance($accent) . '<br><br>';
+	
+//	echo 'White Luminance: ' . fourteen_colors_relative_luminance('#fff') . '<br>';
+//	echo 'Black Luminance: ' . fourteen_colors_relative_luminance('#000') . '<br>';
+//	echo 'White on Black: ' . fourteen_colors_contrast_ratio('#fff','#000') . '<br>';
+//	echo 'White on White: ' . fourteen_colors_contrast_ratio('#000','#000') . '<br><br>';
+	
+	echo 'Contrast on White: ' . fourteen_colors_contrast_ratio($contrast,'#fff') . '<br>';
+	echo 'Accent on White: ' . fourteen_colors_contrast_ratio($accent,'#fff') . '<br>';
+	echo 'Contrast on Blackish: ' . fourteen_colors_contrast_ratio($contrast,'#2b2b2b') . '<br>';
+	echo 'Accent on Black: ' . fourteen_colors_contrast_ratio($accent,'#000') . '<br>';
+	echo 'Accent on Contrast: ' . fourteen_colors_contrast_ratio($accent,$contrast) . '<br>';
+	echo '</div>';
+}
 
 
 /*

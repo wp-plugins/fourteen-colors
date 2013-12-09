@@ -3,7 +3,7 @@ Contributors: celloexpressions
 Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Theme Customizer, Twenty Fourteen Theme, Default Theme, 2014
 Requires at least: 3.8
 Tested up to: 3.8
-Stable tag: 0.1
+Stable tag: 0.2
 Description: Customize the colors of the Twenty Fourteen Theme, directly within the customizer. Currently in development after being extracted from the theme at the late stages of development; plugin will be polished by the final release of WordPress 3.8.
 License: GPLv2
 

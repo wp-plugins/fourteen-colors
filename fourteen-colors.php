@@ -218,19 +218,14 @@ function fourteen_colors_contrast_color_styles() {
 		background-color: rgba(255,255,255,.33);
 	}
 	
-	.hentry .mejs-mediaelement, .hentry .mejs-container .mejs-controls,
-	.content-sidebar .widget_twentyfourteen_ephemera .widget-title:before {
+	.hentry .mejs-mediaelement, .hentry .mejs-container .mejs-controls {
 		background: ' . $contrast_color . ';
-	}
-	
-	.content-sidebar .widget .widget-title {
-		border-top-color: ' . $contrast_color . ';
 	}
 	
 	';
 	
-	/* Adjustents to make lighter Contrast Colors looks just as good. */
-	if( fourteen_colors_color_value( $contrast_color ) > 480 ) {
+	// Adjustents to make lighter Contrast Colors looks just as good.
+	if( fourteen_colors_color_value( $contrast_color ) > 400 ) {
 		$css .= '	
 			#secondary,
 			#secondary a,
@@ -295,6 +290,27 @@ function fourteen_colors_contrast_color_styles() {
 			
 			.mejs-overlay .mejs-overlay-button {
 				background-color: ' . $contrast_color . ';
+			}
+		';
+	}
+	else {
+		// These only really work well with darker colors.
+		$css .= '
+			.content-sidebar .widget_twentyfourteen_ephemera .widget-title:before {
+				background: ' . $contrast_color . ';
+			}
+
+			.paging-navigation,
+			.content-sidebar .widget .widget-title {
+				border-top-color: ' . $contrast_color . ';
+			}
+
+			.content-sidebar .widget .widget-title, 
+			.content-sidebar .widget .widget-title a,
+			.paging-navigation,
+			.paging-navigation a:hover,
+			.paging-navigation a {
+				color: ' . $contrast_color . ';
 			}
 		';
 	}

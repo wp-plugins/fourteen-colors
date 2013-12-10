@@ -120,7 +120,6 @@ function fourteen_colors_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
 
-
 /**
  * Output the CSS for the Contrast Color option.
  *
@@ -164,7 +163,8 @@ function fourteen_colors_contrast_color_styles() {
 	';
 	
 	// Adjustents to make lighter Contrast Colors looks just as good.
-	if( fourteen_colors_color_value( $contrast_color ) > 400 ) {
+	if( fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < 4.5 &&
+		fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < fourteen_colors_contrast_ratio( $contrast_color, '#2b2b2b' ) ) {
 		$css .= '	
 			#secondary,
 			#secondary a,

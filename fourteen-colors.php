@@ -168,6 +168,7 @@ function fourteen_colors_contrast_color_styles() {
 		$css .= '	
 			#secondary,
 			#secondary a,
+			.widget_calendar caption,
 			.site-header a,
 			.site-title a,
 			.site-title a:hover,
@@ -181,7 +182,17 @@ function fourteen_colors_contrast_color_styles() {
 			.hentry .mejs-controls .mejs-button button {
 				color: #2b2b2b;
 			}
-			
+
+			.primary-navigation ul ul a,
+			#secondary .secondary-navigation ul ul a,
+			#secondary .secondary-navigation li:hover > a,
+			#secondary .secondary-navigation li.focus > a,
+			#secondary .widget_calendar tbody a,
+			.site-footer .widget_calendar tbody a,
+			.slider-direction-nav a:hover:before {
+				color: #fff;
+			}
+
 			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded, 
 			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
 				background-color: #2b2b2b;
@@ -277,15 +288,7 @@ function fourteen_colors_accent_color_styles() {
 		return;
 	}
 
-	$accent_mid   = get_theme_mod( 'accent_mid'   );
-	$accent_light = get_theme_mod( 'accent_light' );
-
 	$css = '/* Custom accent color. */
-		a,
-		.content-sidebar .widget a {
-			color: ' . $accent_color . ';
-		}
-
 		button,
 		.contributor-posts-link,
 		input[type="button"],
@@ -335,41 +338,136 @@ function fourteen_colors_accent_color_styles() {
 				background-color: ' . $accent_color . ';
 			}
 		}
+	';
+	
+	// Dark accent color will only be created if needed for visibility on white background.
+	$accent_dark = $accent_color;
 
-		/* Generated "mid" variant of custom accent color. */
+	// Adjustments for light accent colors, including darkening the color where needed.
+	if( fourteen_colors_contrast_ratio( $accent_color, '#fff' ) < 4.5 &&
+		fourteen_colors_contrast_ratio( $accent_color, '#fff' ) < fourteen_colors_contrast_ratio( $accent_color, '#2b2b2b' ) ) {
+
+		$css .= '
+		.primary-navigation ul ul a,
+		#secondary .secondary-navigation ul ul a,
+		#secondary .secondary-navigation li:hover > a,
+		#secondary .secondary-navigation li.focus > a,
+		.contributor-posts-link,
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.search-toggle:before,
+		.mejs-overlay:hover .mejs-overlay-button,
+		.widget button,
+		.widget input[type="button"],
+		.widget input[type="reset"],
+		.widget input[type="submit"],
+		#secondary .widget_calendar tbody a,
+		.site-footer .widget_calendar tbody a,
+		.content-sidebar .widget input[type="button"],
+		.content-sidebar .widget input[type="reset"],
+		.content-sidebar .widget input[type="submit"],
 		button:hover,
 		button:focus,
 		.contributor-posts-link:hover,
+		.contributor-posts-link:active,
 		input[type="button"]:hover,
 		input[type="button"]:focus,
 		input[type="reset"]:hover,
 		input[type="reset"]:focus,
 		input[type="submit"]:hover,
 		input[type="submit"]:focus,
+		.slider-direction-nav a:hover:before {
+			color: #2b2b2b;
+		}
+
+		@media screen and (min-width: 782px) {
+			.primary-navigation li:hover > a,
+			.primary-navigation li.focus > a,
+			.primary-navigation ul ul {
+				color: #2b2b2b;
+			}
+		}
+
+		@media screen and (min-width: 1008px) {
+			.secondary-navigation li:hover > a,
+			.secondary-navigation li.focus > a,
+			.secondary-navigation ul ul {
+				color: #2b2b2b;
+			}
+		}
+
+		::selection {
+			color: #2b2b2b;
+		}
+
+		::-moz-selection {
+			color: #2b2b2b;
+		}
+		';
+		
+		// Darken the accent color, if needed, for adequate contrast against white page background.
+		while( fourteen_colors_contrast_ratio( $accent_dark, '#fff' ) < 4.5 ) {
+			$accent_dark = fourteen_colors_adjust_color( $accent_dark, -5 );
+		}
+	}
+	
+	// Base the color variants off of the potentially darkened color.
+	$accent_mid = fourteen_colors_adjust_color( $accent_color, 29);
+	$accent_mid_dark = fourteen_colors_adjust_color( $accent_dark, 29);
+	$accent_light = fourteen_colors_adjust_color( $accent_color, 49);
+
+	$css .= '
+		a,
+		.content-sidebar .widget a {
+			color: ' . $accent_dark . ';
+		}
+		
+		/* Generated "mid" variant of custom accent color. */
+		.contributor-posts-link:hover,
+		.slider-control-paging a:hover:before,
 		.search-toggle:hover,
 		.search-toggle.active,
 		.search-box,
-		.entry-meta .tag-links a:hover,
+		.site-navigation a:hover,
+		.widget_calendar tbody a:hover,
+		button:hover,
+		button:focus,
+		input[type="button"]:hover,
+		input[type="button"]:focus,
+		input[type="reset"]:hover,
+		input[type="reset"]:focus,
+		input[type="submit"]:hover,
+		input[type="submit"]:focus,
 		.widget input[type="button"]:hover,
 		.widget input[type="button"]:focus,
 		.widget input[type="reset"]:hover,
 		.widget input[type="reset"]:focus,
 		.widget input[type="submit"]:hover,
 		.widget input[type="submit"]:focus,
-		.widget_calendar tbody a:hover,
 		.content-sidebar .widget input[type="button"]:hover,
 		.content-sidebar .widget input[type="button"]:focus,
 		.content-sidebar .widget input[type="reset"]:hover,
 		.content-sidebar .widget input[type="reset"]:focus,
 		.content-sidebar .widget input[type="submit"]:hover,
-		.content-sidebar .widget input[type="submit"]:focus,
-		.slider-control-paging a:hover:before {
+		.content-sidebar .widget input[type="submit"]:focus {
 			background-color: ' . $accent_mid . ';
+		}
+
+		.featured-content a:hover,
+		.featured-content .entry-title a:hover,
+		.widget a:hover,
+		.widget-title a:hover,
+		.widget_twentyfourteen_ephemera .entry-meta a:hover,
+		.hentry .mejs-controls .mejs-button button:hover,
+		.site-info a:hover,
+		.featured-content a:hover {
+			color: ' . $accent_mid . ';
 		}
 
 		a:active,
 		a:hover,
-		.site-navigation a:hover,
 		.entry-title a:hover,
 		.entry-meta a:hover,
 		.cat-links a:hover,
@@ -382,25 +480,23 @@ function fourteen_colors_accent_color_styles() {
 		.comment-list .trackback a:hover,
 		.comment-metadata a:hover,
 		.comment-reply-title small a:hover,
-		.widget a:hover,
-		.widget-title a:hover,
-		.widget_twentyfourteen_ephemera .entry-meta a:hover,
 		.content-sidebar .widget a:hover,
 		.content-sidebar .widget .widget-title a:hover,
-		.content-sidebar .widget_twentyfourteen_ephemera .entry-meta a:hover,
-		.hentry .mejs-controls .mejs-button button:hover,
-		.site-info a:hover,
-		.featured-content a:hover {
-			color: ' . $accent_mid . ';
+		.content-sidebar .widget_twentyfourteen_ephemera .entry-meta a:hover {
+			color: ' . $accent_mid_dark . ';
 		}
 
 		.page-links a:hover,
 		.paging-navigation a:hover {
-			border-color: ' . $accent_mid . ';
+			border-color: ' . $accent_mid_dark . ';
 		}
 
 		.entry-meta .tag-links a:hover:before {
-			border-right-color: ' . $accent_mid . ';
+			border-right-color: ' . $accent_mid_dark . ';
+		}
+
+		.entry-meta .tag-links a:hover {
+			background-color: ' . $accent_mid_dark . ';
 		}
 
 		@media screen and (min-width: 782px) {
@@ -438,6 +534,10 @@ function fourteen_colors_accent_color_styles() {
 		.site-navigation .current-menu-ancestor > a {
 			color: ' . $accent_light . ';
 		}';
+
+
+
+		
 
 	echo '<style type="text/css">'.$css.'</style>';
 //	wp_add_inline_style( 'twentyfourteen-style', $css );

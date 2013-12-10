@@ -1,13 +1,20 @@
 <?php
-/* 
-Various helper functions for conditional styles and color modifications.
-@since Fourteen Colors 0.3
-*/
+/**
+ * Various helper functions for conditional styles and color modifications.
+ *
+ * These functions are generic; they can be used for color calculations 
+ * unrelated to the Fourteen Colors plugin (note that they are dependent
+ * on each other).
+ *
+ * @package WordPress
+ * @subpackage Fourteen Colors
+ * @since Fourteen Colors 0.5
+ */
 
 /**
  * Convert 3- or 6-digit Hex to RGB.
  *
- * @since Fourteen Colors 0.3
+ * @since Fourteen Colors 0.5
  *
  * @param string $color The color, in 3- or 6-digit hexadecimal form.
  * @return array $rgb The color, in an array( r, g, b )
@@ -20,7 +27,7 @@ function fourteen_colors_hex2rgb( $color ) {
 
 	// Convert hex to rgb.
 	$rgb = array( hexdec( substr( $color, 1, 2 ) ), hexdec( substr( $color, 3, 2 ) ), hexdec( substr( $color, 5, 2 ) ) );
-	
+
 	return $rgb;
 }
 
@@ -31,7 +38,7 @@ function fourteen_colors_hex2rgb( $color ) {
  * All three RGB values are modified by the specified steps, within the range of 0-255. The hue
  * is generally maintained unless the number of steps causes one value to be capped at 0 or 255.
  *
- * @since Twenty Fourteen 1.0
+ * @since Fourteen Colors 0.1
  *
  * @param string $color The original color, in 3- or 6-digit hexadecimal form.
  * @param int $steps The number of steps to adjust the color by, in RGB units.
@@ -56,40 +63,16 @@ function fourteen_colors_adjust_color( $color, $steps ) {
 	return $hex;
 }
 
-
-
-/**
- * Calculate the (lightness/darkness) value of a color, to determine whether it should be
- * used with a light or dark text color.
- *
- * @since Twenty Fourteen 1.0
- *
- * @param string $color The color, in 3- or 6-digit hexadecimal form.
- * @return int $value The value of the color, in cumulative RGB units.
- */
-function fourteen_colors_color_value( $color ) {
-	// Convert hex string to rgb array.
-	$rgb = fourteen_colors_hex2rgb( $color );
-
-	// Sum rgb values.
-	$value = 0;
-	foreach ( $rgb as $one_value ) {
-		$value += $one_value;
-	}
-
-	return $value;
-}
-
 /**
  * Calculate the relative luminance of a hex color.
  *
  * Used to determine color contrast and to determine appropriate color
  * patterns given different contexts.
  *
- * Officially the the relative brightness of any point in a colorspace, 
+ * Officially, the relative brightness of any point in a colorspace, 
  * normalized to 0 for darkest black and 1 for lightest white.
  *
- * @since Fourteen Colors 0.3
+ * @since Fourteen Colors 0.5
  * @link http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
  *
  * @param string $color The color, in 3- or 6-digit hexadecimal form.
@@ -117,7 +100,7 @@ function fourteen_colors_relative_luminance( $color ) {
  * Text and background colors can be passed to the function in either order. The 
  * lighter and darker color are automatically determined by the function.
  *
- * @since Fourteen Colors 0.3
+ * @since Fourteen Colors 0.5
  * @link http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
  *
  * @param string $color1 The background or text color, in 3- or 6-digit hexadecimal form.

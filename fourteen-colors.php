@@ -131,13 +131,13 @@ function fourteen_colors_temp_footer() {
 /
 function twentyfourteen_customizer_editor_styles() {
 	$accent_color = get_theme_mod( 'accent_color' );
-	$accent_mid = get_theme_mod( 'accent_mid' );
+
 	echo '<style type="text/css">
 		a, a:vistited {
 			color: ' . $accent_color . ';
 		}
 		a:hover, a:focus {
-			color: ' . $accent_mid . ';
+			color: ' . fourteen_colors_adjust_color( $accent_color, 29 ) . ';
 		}
 		::-moz-selection {
 			background: ' . $accent_color . ';

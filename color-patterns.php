@@ -7,7 +7,7 @@
  * @since Fourteen Colors 0.5
  */
 
-require( 'color-calculations.php' )
+require( 'color-calculations.php' );
 
 /**
  * Returns the CSS for the Contrast Color option.

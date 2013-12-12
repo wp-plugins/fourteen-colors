@@ -2,11 +2,12 @@
 /**
  * Plugin Name: Fourteen Colors
  * Plugin URI: http://celloexpressions.com/plugins/fourteen-colors
- * Description: Customize the colors of the Twenty Fourteen Theme, directly within the customizer.
+ * Description: Customize the colors of the Twenty Fourteen Theme, directly within the Theme Customizer.
  * Version: 0.5
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
  * Tags: Twenty Fourteen, Colors, Customizer, Custom Colors, Theme Colors
+ * Text Domain: fourteen-colors
  * License: GPL
 
 =====================================================================================
@@ -33,7 +34,29 @@ if ( get_template() != 'twentyfourteen' ) {
 	return;
 }
 
+/**
+ * Loads the plugin textdomain for translations.
+ *
+ * @since Fourteen Colors 0.6
+ *
+ * @return void
+ */
+function fourteen_colors_load_textdomain() {
+	// This will load the WordPress-downloaded language pack if it exists, as languages are not bundled with the plugin.
+	load_plugin_textdomain( 'fourteen-colors' );
+}
+add_action( 'plugins_loaded', 'fourteen_colors_load_textdomain' );
+
+/**
+ * Add and modify the customizer settings and controls.
+ *
+ * @since Fourteen Colors 0.1
+ *
+ * @return void
+ */
 function fourteen_colors_customize_register( $wp_customize ) {
+	//$wp_customize->get_section( 'colors' )->description = __( 'Background may only be visible on wide screens.', 'fourteen-colors' );
+
 	// Add the custom accent color setting and control.
 	$wp_customize->add_setting( 'accent_color', array(
 		'default'           => '#24890d',
@@ -41,17 +64,18 @@ function fourteen_colors_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
-		'label'    => __( 'Accent Color', 'fourteen_colors' ),
+		'label'    => __( 'Accent Color', 'fourteen-colors' ),
 		'section'  => 'colors',
 	) ) );
 
+	// Add the custom contrast color setting and control.
 	$wp_customize->add_setting( 'contrast_color', array(
 		'default'           => '#000000',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'contrast_color', array(
-		'label'    => __( 'Contrast Color', 'fourteen_colors' ),
+		'label'    => __( 'Contrast Color', 'fourteen-colors' ),
 		'section'  => 'colors',
 	) ) );
 	
@@ -59,6 +83,7 @@ function fourteen_colors_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'fourteen_colors_customize_register' );
 
+// Contains functions that generate CSS for all color modification patterns.
 require( 'color-patterns.php' );
 
 /**
@@ -82,14 +107,30 @@ function fourteen_colors_generate_css() {
 function fourteen_colors_rebuild_color_patterns() {
 	set_theme_mod( 'fourteen_colors_css', fourteen_colors_generate_css() );
 }
+// Allow Fourteen Colors to run on child themes by not hardcoding "twentyfourteen".
 $fourteen_colors_theme = get_stylesheet();
 add_action( "update_option_theme_mods_$fourteen_colors_theme", 'fourteen_colors_rebuild_color_patterns' );
 
+/**
+ * Enqueue standalone CSS components/files.
+ *
+ * @since Fourteen Colors 0.5
+ *
+ * @return void
+ */
 function fourteen_colors_styles() {
 	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css', __FILE__ ) );
 }
 add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
 
+
+/**
+ * Output all dynamic custom-color CSS.
+ *
+ * @since Fourteen Colors 0.5
+ *
+ * @return void
+ */
 function fourteen_colors_print_output() {
 	echo '<style id="fourteen-colors" type="text/css">' . get_theme_mod( 'fourteen_colors_css' ) . '</style>';
 }

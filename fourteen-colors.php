@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 =====================================================================================
 */
 
-// only run if theme or parent theme is Twenty Fourteen
-if ( ! substr( get_template_directory_uri(), -14 ) === 'twentyfourteen' ) {
+// Only run if theme or parent theme is Twenty Fourteen.
+if ( get_template() != 'twentyfourteen' ) {
 	return;
 }
 

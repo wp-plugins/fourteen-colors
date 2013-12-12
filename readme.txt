@@ -4,17 +4,27 @@ Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Theme Customizer, Twenty F
 Requires at least: 3.8
 Tested up to: 3.8
 Stable tag: 0.2
-Description: Customize the colors of the Twenty Fourteen Theme, directly within the customizer. Currently in development after being extracted from the theme at the late stages of development; plugin will be polished by the final release of WordPress 3.8.
+Description: Customize the colors of the Twenty Fourteen Theme, directly within the Theme Customizer.
 License: GPLv2
 
 == Description ==
-Adds back the Accent Color feature that was removed from the theme right before its release (see http://core.trac.wordpress.org/ticket/26220). As noted in the ticket, there are currently some limitations to the colors that can be chosen as Accent Colors; these will be removed before the release of WordPress 3.8.
+Not a big fan of green and black? Love the layout of Twenty Fourteen, but need its colors to match your brand? Don't have time to create a child theme, or want to change up your site's look on a regular basis without technical overhead?
 
-Also adds a "Contrast Color" feature, which supports any color choice and lets you give Twenty Fourteen a completely different look and feel in seconds.
+Fourteen Colors is the most efficient way to re-color the Twenty Fourteen theme. It provides two color pickers, which together control:
+- Header/Sidebar/Footer Background Color
+- Featured Content Background Color
+- Link Color
+- Search Bar Color
+- Navigation Menu Hover Colors
+- Text Selection/Highlight Color
+- Audio/Video Player Colorschemes
+- And more...
 
-This plugin is currently in development and will be fully polished in time for the release of WordPress 3.8 and the Twenty Fourteen Theme, on December 12, 2013. Please feel free to test it out, but keep in mind that it isn't quite ready for primetime... yet! (and neither is Twenty Fourteen, of course)
+Fourteen Colors automatically adjusts your color choices to ensure the minimum required contrast to keep Twenty Fourteen accessible-ready, and to keep your site as readable as possible. The plugin is designed to support almost any combination of colors, so you can be creative and express yourself with your site! Please report any issues on the support forums.
 
-By the way, despite the plugin's name, there are only two customizable color fields to make it easy to customize your site in a matter of seconds!
+The Accent Color feature was originally developed in Twenty Fourteen core, but it was removed near the end of the development cycle due to a variety of concerns. This plugin addresses those cincerns and adds the cintrast color feature to enable a broad range of custom colorschemes.
+
+Special thanks to the entire Twenty Fourteen team for developing the accent color throughout the development cycle. This plugin (and Twenty Fourteen) would not exist without their hard work and attention to detail.
 
 == Installation ==
 1. Take the easy route and install through the WordPress plugin adder OR
@@ -25,41 +35,44 @@ By the way, despite the plugin's name, there are only two customizable color fie
 
 == Frequently Asked Questions ==
 = I tried using Fourteen Colors with a theme other than Twenty Fourteen and ... =
-Don't.
+Don't. There is a known bug where the plugin may be applied to other themes when live previewing them, but Fourteen Colors will prevent itself from functioning when the current theme is not Twenty Fourteen or a child.
 
 = Child Themes =
-Fourteen Colors is a plugin, not a child theme, because it is primarily programmatic (ie, it would only consist of a functions.php file) and for flexibility.
+Fourteen Colors is a plugin, not a child theme, because it is primarily programmatic (ie, it would only consist of a functions.php file), and for flexibility.
 
 You can use Fourteen Colors with both Twenty Fourteen and child themes. Be aware that the Fourteen Colors settings are stored with the active theme, so if you switch to a child theme or switch child themes, you'll need to re-set your colors. Child theme compatibility depends on the extent of changes made by the child theme.
 
-== Development Roadmap ==
-= 0.3 =
-* Adjustments to make any color work as the accent color.
+= Suggested/Recommended Colors =
+The contrast color option tends to work best with colors that are either grayscale or close to grayscale. Try dark light or dark grays in conjunction with any accent color if the default black feels too bold.
 
-= 0.4 =
-* Save the colors CSS to an external stylesheet.
-* Apply the accent color to the editor styles.
+Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, lighter colors such as yellow do work well, as do darker colors such as black, with a good choice of cotrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's ao=lready dark) to increase the overall contrast of your site.
 
-= 0.5 =
-* Code cleanup, inline comments, coding standards to match Twenty Fourteen.
+= Supported Colors =
+All colors are supported except for pure white (#fff), which should technically work but results in a poor user experience due to the lack of contrast, which helps to provide visual hierarchy. Pure black (#000) accent colors are more fully supported, but can also have (less significant) issues with providing propper visual hierarchy.
 
-= 0.6 =
-* Tweaks post-code-review.
+== Changelog ==
+= 1.0 =
+* Plugin is ready for general use, alongside Twenty Fourteen 1.0 and WordPress 3.8
 
 = 0.7 =
 * Screenshots, finalized documentation.
 
-= 1.0 =
-* Final initial release.
-* Target date: 12/12/2013, alongside WordPress 3.8 and Twenty Fourteen 1.0
+= 0.6 =
+* Code cleanup, inline code documentation, coding standards to match Twenty Fourteen core.
+* Tweaks post-code-review, props @lancewillett.
 
-== Changelog ==
+= 0.5 =
+* Save the entire plugin CSS output as a single theme_mod to allow for more computationally intensive color calculations.
+* Introduce a more robust set of color calculations; most importantly, the ability to calculate the contrast ratio between any two colors.
+* Adjustments to make any color work as the accent color, addressing the concerns that led to the feature's removal from Twenty Fourteen core.
+* Ensure that there is adequate contrast between all colors that are displayed against each other.
+
 = 0.2 =
 * Build out of the contrast color option.
 
 = 0.1 =
 * Initial port from the Twenty Fourteen Theme's implementation 
-* Initial pass at a "Contrast Color" option
+* Initial pass at an experimental "Contrast Color" option
 
 == Upgrade Notice ==
 = 0.2 =

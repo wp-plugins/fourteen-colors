@@ -32,8 +32,7 @@ function fourteen_colors_contrast_css() {
 		.site-footer,
 		.featured-content,
 		.featured-content .entry-header,
-		.slider-direction-nav a,
-		.slider-control-paging {
+		.slider-direction-nav a {
 			background-color: ' . $contrast_color . ';
 		}
 		
@@ -45,7 +44,8 @@ function fourteen_colors_contrast_css() {
 			background-color: rgba(255,255,255,.33);
 		}
 		
-		.hentry .mejs-mediaelement, .hentry .mejs-container .mejs-controls {
+		.hentry .mejs-mediaelement,
+		.hentry .mejs-container .mejs-controls {
 			background: ' . $contrast_color . ';
 		}
 	';
@@ -53,9 +53,11 @@ function fourteen_colors_contrast_css() {
 	// Adjustents to make lighter Contrast Colors looks just as good.
 	if( fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < 4.5 &&
 		fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < fourteen_colors_contrast_ratio( $contrast_color, '#2b2b2b' ) ) {
-		$css .= '	
-			#secondary,
-			#secondary a,
+		$css .= '
+			.site-description,
+			.secondary-navigation a,
+			.widget,
+			.widget a,
 			.widget_calendar caption,
 			.site-header a,
 			.site-title a,
@@ -72,10 +74,10 @@ function fourteen_colors_contrast_css() {
 			}
 
 			.primary-navigation ul ul a,
-			#secondary .secondary-navigation ul ul a,
-			#secondary .secondary-navigation li:hover > a,
-			#secondary .secondary-navigation li.focus > a,
-			#secondary .widget_calendar tbody a,
+			.secondary-navigation ul ul a,
+			.secondary-navigation li:hover > a,
+			.secondary-navigation li.focus > a,
+			.widget_calendar tbody a,
 			.site-footer .widget_calendar tbody a,
 			.slider-direction-nav a:hover:before {
 				color: #fff;
@@ -174,7 +176,8 @@ function fourteen_colors_accent_css() {
 		return '';
 	}
 
-	$css = '/* Custom accent color. */
+	$css = '
+		/* Custom accent color. */
 		button,
 		.contributor-posts-link,
 		input[type="button"],
@@ -235,9 +238,9 @@ function fourteen_colors_accent_css() {
 
 		$css .= '
 			.primary-navigation ul ul a,
-			#secondary .secondary-navigation ul ul a,
-			#secondary .secondary-navigation li:hover > a,
-			#secondary .secondary-navigation li.focus > a,
+			.secondary-navigation ul ul a,
+			.secondary-navigation li:hover > a,
+			.secondary-navigation li.focus > a,
 			.contributor-posts-link,
 			button,
 			input[type="button"],
@@ -249,7 +252,8 @@ function fourteen_colors_accent_css() {
 			.widget input[type="button"],
 			.widget input[type="reset"],
 			.widget input[type="submit"],
-			#secondary .widget_calendar tbody a,
+			.widget_calendar tbody a,
+			.widget_calendar tbody a:hover
 			.site-footer .widget_calendar tbody a,
 			.content-sidebar .widget input[type="button"],
 			.content-sidebar .widget input[type="reset"],
@@ -426,19 +430,83 @@ function fourteen_colors_accent_css() {
 }
 
 /**
- * Returns the CSS that ensures adequate contrast between the Contrast and Accent Color options.
+ * Returns the CSS that increases contrast between the Contrast and Accent Colors is needed.
  *
- * These styles should be added after the styles for each individual component.
+ * These styles should be added after the styles for each individual component. The default colors
+ * pass the initial contrast tests here, so no modifications are made.
  *
- * @since Fourteen Colors 0.4
+ * @since Fourteen Colors 0.5
  *
  * @return String $css
  */
 function fourteen_colors_general_css() {
 	$accent_color = get_theme_mod( 'accent_color', '#24890d' );
 	$contrast_color = get_theme_mod( 'contrast_color', '#000000' );
+	
+	$css = '';
+	
+//	if( not enough contrast for mediaelements current time ) { hide loaded indicator }
+	
+	if( fourteen_colors_contrast_ratio( $accent_color, $contrast_color ) > 3 ) {
+		// We're good. Accent-on-contrast is all hover states except for
+		// current nav item, so contrast ratio of 3:1 is acceptable.
+		return $css;
+	}
 
-	// TODO: lots of conditionals, especially considering hoverstates, for sidebar, footer, featured content, and mediaelements players.
+	// Try lightening accent color to acheive desired contrast, until hitting white.
+	$accent_lightened = $accent_color;
+	while( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) < 3
+		   && fourteen_colors_relative_luminance( $accent_lightened ) < 1 ) {
+		$accent_lightened = fourteen_colors_adjust_color( $accent_lightened, 8 );
+	}
+	
+	// Did we make it?
+	if( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) > 3 ) {
+		$accent_color = $accent_lightened;
+	}
+	else {
+		// Try darkening accent color to acheive desired contrast, until hitting black.
+		$accent_darkened = $accent_color;
+		while( fourteen_colors_contrast_ratio( $accent_darkened, $contrast_color ) < 3
+			   && fourteen_colors_relative_luminance( $accent_darkened ) > 0 ) {
+			$accent_darkened = fourteen_colors_adjust_color( $accent_darkened, -8 );
+		}
+				
+		// Do we acheive higher contrast with the lightened or darkened color?
+		if( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) < fourteen_colors_contrast_ratio( $accent_darkened, $contrast_color ) ) {
+			$accent_color = $accent_darkened;
+		}
+		else {
+			$accent_color = $accent_lightened;
+		}
+	}
 
-	return '';
+	// Replace the accent color with the higher-contrast version against the contrast color.
+	$css = '
+		/* Higher contrast Accent Color against contrast color */
+		.site-navigation .current_page_item > a,
+		.site-navigation .current_page_ancestor > a,
+		.site-navigation .current-menu-item > a,
+		.site-navigation .current-menu-ancestor > a,
+		.featured-content a:hover,
+		.featured-content .entry-title a:hover,
+		.widget a:hover,
+		.widget-title a:hover,
+		.widget_twentyfourteen_ephemera .entry-meta a:hover,
+		.hentry .mejs-controls .mejs-button button:hover,
+		.site-info a:hover,
+		.featured-content a:hover {
+			color: ' . $accent_color . ';
+		}
+
+		.hentry .mejs-controls .mejs-time-rail .mejs-time-current,
+		.mejs-overlay:hover .mejs-overlay-button,
+		.slider-control-paging a:hover:before,
+		.slider-control-paging .slider-active:before,
+		.slider-control-paging .slider-active:hover:before {
+			background-color: ' . $accent_color . ';
+		}
+	';
+
+	return $css;
 }

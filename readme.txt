@@ -22,7 +22,7 @@ Fourteen Colors is the most efficient way to re-color the Twenty Fourteen theme.
 
 Fourteen Colors automatically adjusts your color choices to ensure the minimum required contrast to keep Twenty Fourteen accessible-ready, and to keep your site as readable as possible. The plugin is designed to support almost any combination of colors, so you can be creative and express yourself with your site! Please report any issues on the support forums.
 
-The Accent Color feature was originally developed in Twenty Fourteen core, but it was removed near the end of the development cycle due to a variety of concerns. This plugin addresses those cincerns and adds the cintrast color feature to enable a broad range of custom colorschemes.
+The Accent Color feature was originally developed in Twenty Fourteen core, but it was removed near the end of the development cycle due to a variety of concerns. This plugin addresses those concerns and adds the contrast color feature to enable a broad range of custom colorschemes.
 
 Special thanks to the entire Twenty Fourteen team for developing the accent color throughout the development cycle. This plugin (and Twenty Fourteen) would not exist without their hard work and attention to detail.
 
@@ -45,10 +45,18 @@ You can use Fourteen Colors with both Twenty Fourteen and child themes. Be aware
 = Suggested/Recommended Colors =
 The contrast color option tends to work best with colors that are either grayscale or close to grayscale. Try dark light or dark grays in conjunction with any accent color if the default black feels too bold.
 
-Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, lighter colors such as yellow do work well, as do darker colors such as black, with a good choice of cotrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's ao=lready dark) to increase the overall contrast of your site.
+Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, lighter colors such as yellow do work well, as do darker colors such as black, with a good choice of contrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's already dark) to increase the overall contrast of your site.
 
 = Supported Colors =
-All colors are supported except for pure white (#fff), which should technically work but results in a poor user experience due to the lack of contrast, which helps to provide visual hierarchy. Pure black (#000) accent colors are more fully supported, but can also have (less significant) issues with providing propper visual hierarchy.
+All colors are supported except for pure white (#fff), which should technically work but results in a poor user experience due to the lack of contrast, which helps to provide visual hierarchy. Pure black (#000) accent colors are more fully supported, but can also have (less significant) issues with providing proper visual hierarchy.
+
+== Screenshots ==
+1. Light theme with a touch of blue
+2. Autumn colors
+3. Happy Holidays!
+4. Purple and Pink
+5. Blue and Orange
+6. Gray and Yellow
 
 == Changelog ==
 = 1.0 =

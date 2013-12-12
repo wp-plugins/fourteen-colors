@@ -87,7 +87,6 @@ add_action( "update_option_theme_mods_$fourteen_colors_theme", 'fourteen_colors_
 
 function fourteen_colors_styles() {
 	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css', __FILE__ ) );
-	//wp_add_inline_style( 'fourteen-colors-mediaelements', get_theme_mod( 'fourteen_colors_css' ) );
 }
 add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
 
@@ -95,28 +94,3 @@ function fourteen_colors_print_output() {
 	echo '<style id="fourteen-colors" type="text/css">' . get_theme_mod( 'fourteen_colors_css' ) . '</style>';
 }
 add_action( 'wp_head', 'fourteen_colors_print_output' );
-
-/*
-/**
-* Outputs the custom accent color CSS for the editor.
-/
-function twentyfourteen_customizer_editor_styles() {
-	$accent_color = get_theme_mod( 'accent_color' );
-
-	echo '<style type="text/css">
-		a, a:vistited {
-			color: ' . $accent_color . ';
-		}
-		a:hover, a:focus {
-			color: ' . fourteen_colors_adjust_color( $accent_color, 29 ) . ';
-		}
-		::-moz-selection {
-			background: ' . $accent_color . ';
-		}
-		::selection {
-			background: ' . $accent_color . ';
-		}
-	</style>';
-	}
-add_action( 'some_action_in_tinymce_head', 'twentyfourteen_customizer_editor_styles' );
-*/

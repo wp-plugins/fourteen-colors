@@ -96,35 +96,6 @@ function fourteen_colors_print_output() {
 }
 add_action( 'wp_head', 'fourteen_colors_print_output' );
 
-
-// Temporary output of color contrast information:
-add_action( 'wp_footer', 'fourteen_colors_temp_footer' );
-function fourteen_colors_temp_footer() {
-	$contrast = get_theme_mod('contrast_color');
-	$accent = get_theme_mod('accent_color');
-	
-	echo '<div style="position:fixed; top:0; left: 50%; margin:0 0 0 -50px; padding: 12px 16px; background: #222; color:#f33; width:200px; z-index:5;">';
-	echo 'Contrast Color: ' . $contrast . '<br>';
-//	echo 'Contrast Color: ' . print_r( fourteen_colors_hex2rgb( $contrast ) ) . '<br>';
-//	echo 'White: ' . print_r( fourteen_colors_hex2rgb( '#fff' ) ) . '<br>';
-//	echo 'Contrast Luminance: ' . fourteen_colors_relative_luminance($contrast) . '<br>';
-	echo 'Accent Color: ' . $accent . '<br><br>';
-//	echo 'Accent Color: ' . print_r( fourteen_colors_hex2rgb( $accent ) ) . '<br>';
-//	echo 'Accent Luminance: ' . fourteen_colors_relative_luminance($accent) . '<br><br>';
-	
-//	echo 'White Luminance: ' . fourteen_colors_relative_luminance('#fff') . '<br>';
-//	echo 'Black Luminance: ' . fourteen_colors_relative_luminance('#000') . '<br>';
-//	echo 'White on Black: ' . fourteen_colors_contrast_ratio('#fff','#000') . '<br>';
-//	echo 'White on White: ' . fourteen_colors_contrast_ratio('#000','#000') . '<br><br>';
-	
-	echo 'Contrast on White: ' . fourteen_colors_contrast_ratio($contrast,'#fff') . '<br>';
-	echo 'Accent on White: ' . fourteen_colors_contrast_ratio($accent,'#fff') . '<br>';
-	echo 'Contrast on Blackish: ' . fourteen_colors_contrast_ratio($contrast,'#2b2b2b') . '<br>';
-	echo 'Accent on Black: ' . fourteen_colors_contrast_ratio($accent,'#000') . '<br>';
-	echo 'Accent on Contrast: ' . fourteen_colors_contrast_ratio($accent,$contrast) . '<br>';
-	echo '</div>';
-}
-
 /*
 /**
 * Outputs the custom accent color CSS for the editor.

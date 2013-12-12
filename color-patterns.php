@@ -51,7 +51,7 @@ function fourteen_colors_contrast_css() {
 	';
 	
 	// Adjustents to make lighter Contrast Colors looks just as good.
-	if( fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < 4.5 &&
+	if ( fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < 4.5 &&
 		fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < fourteen_colors_contrast_ratio( $contrast_color, '#2b2b2b' ) ) {
 		$css .= '
 			.site-description,
@@ -228,7 +228,7 @@ function fourteen_colors_accent_css() {
 	$accent_dark = $accent_color;
 
 	// Adjustments for light accent colors, including darkening the color where needed.
-	if( fourteen_colors_contrast_ratio( $accent_color, '#fff' ) < 4.5 &&
+	if ( fourteen_colors_contrast_ratio( $accent_color, '#fff' ) < 4.5 &&
 		fourteen_colors_contrast_ratio( $accent_color, '#fff' ) < fourteen_colors_contrast_ratio( $accent_color, '#2b2b2b' ) ) {
 
 		$css .= '
@@ -444,7 +444,7 @@ function fourteen_colors_general_css() {
 	$accent_color = get_theme_mod( 'accent_color', '#24890d' );
 	$contrast_color = get_theme_mod( 'contrast_color', '#000000' );
 
-	if( fourteen_colors_contrast_ratio( $accent_color, $contrast_color ) > 3 ) {
+	if ( fourteen_colors_contrast_ratio( $accent_color, $contrast_color ) > 3 ) {
 		// We're good. Accent-on-contrast is all hover states except for
 		// current nav item, so contrast ratio of 3:1 is acceptable.
 		return '';
@@ -458,7 +458,7 @@ function fourteen_colors_general_css() {
 	}
 
 	// Did we make it?
-	if( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) > 3 ) {
+	if ( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) > 3 ) {
 		$accent_color = $accent_lightened;
 	}
 	else {
@@ -470,7 +470,7 @@ function fourteen_colors_general_css() {
 		}
 
 		// Do we acheive higher contrast with the lightened or darkened color?
-		if( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) < fourteen_colors_contrast_ratio( $accent_darkened, $contrast_color ) ) {
+		if ( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) < fourteen_colors_contrast_ratio( $accent_darkened, $contrast_color ) ) {
 			$accent_color = $accent_darkened;
 		}
 		else {

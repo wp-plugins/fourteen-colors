@@ -113,7 +113,7 @@ function fourteen_colors_contrast_ratio( $color1, $color2 ) {
 	$l2 = fourteen_colors_relative_luminance( $color2 );
 
 	// Determine the larger color and re-order if necessary.
-	if( $l1 < $l2 ) {
+	if ( $l1 < $l2 ) {
 		$l_ = $l1;
 		$l1 = $l2;
 		$l2 = $l_;

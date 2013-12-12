@@ -55,7 +55,8 @@ add_action( 'plugins_loaded', 'fourteen_colors_load_textdomain' );
  * @return void
  */
 function fourteen_colors_customize_register( $wp_customize ) {
-	//$wp_customize->get_section( 'colors' )->description = __( 'Background may only be visible on wide screens.', 'fourteen-colors' );
+	// Tweak the colors section's description.
+	// $wp_customize->get_section( 'colors' )->description = __( 'Accent color includes links, text selection, the header search bar, and more; use vibrant colors for best results. Contrast color includes the header, sidebar, footer, and other details, and represents the visual contrast between the main content area (white) and the rest of the site (black by default).', 'fourteen-colors' );
 
 	// Add the custom accent color setting and control.
 	$wp_customize->add_setting( 'accent_color', array(
@@ -132,6 +133,6 @@ add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
  * @return void
  */
 function fourteen_colors_print_output() {
-	echo '<style id="fourteen-colors" type="text/css">' . get_theme_mod( 'fourteen_colors_css' ) . '</style>';
+	echo '<style id="fourteen-colors" type="text/css">' . get_theme_mod( 'fourteen_colors_css', '/* Fourteen Colors is not yet configured. */' ) . '</style>';
 }
 add_action( 'wp_head', 'fourteen_colors_print_output' );

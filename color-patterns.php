@@ -83,11 +83,6 @@ function fourteen_colors_contrast_css() {
 				color: #fff;
 			}
 
-			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded, 
-			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
-				background-color: #2b2b2b;
-			}
-
 			.slider-control-paging a:before {
 				background-color: rgba(0, 0, 0, .33);
 			}
@@ -228,7 +223,7 @@ function fourteen_colors_accent_css() {
 			}
 		}
 	';
-	
+
 	// Darker accent color will only be created if needed for visibility on white background.
 	$accent_dark = $accent_color;
 
@@ -295,6 +290,12 @@ function fourteen_colors_accent_css() {
 			::-moz-selection {
 				color: #2b2b2b;
 			}
+
+			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded, 
+			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+				background-color: #2b2b2b;
+			}
+
 		';
 		
 		// Darken the accent color, if needed, for adequate (4.5:1) contrast against white page background.
@@ -442,15 +443,11 @@ function fourteen_colors_accent_css() {
 function fourteen_colors_general_css() {
 	$accent_color = get_theme_mod( 'accent_color', '#24890d' );
 	$contrast_color = get_theme_mod( 'contrast_color', '#000000' );
-	
-	$css = '';
-	
-//	if( not enough contrast for mediaelements current time ) { hide loaded indicator }
-	
+
 	if( fourteen_colors_contrast_ratio( $accent_color, $contrast_color ) > 3 ) {
 		// We're good. Accent-on-contrast is all hover states except for
 		// current nav item, so contrast ratio of 3:1 is acceptable.
-		return $css;
+		return '';
 	}
 
 	// Try lightening accent color to acheive desired contrast, until hitting white.
@@ -459,7 +456,7 @@ function fourteen_colors_general_css() {
 		   && fourteen_colors_relative_luminance( $accent_lightened ) < 1 ) {
 		$accent_lightened = fourteen_colors_adjust_color( $accent_lightened, 8 );
 	}
-	
+
 	// Did we make it?
 	if( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) > 3 ) {
 		$accent_color = $accent_lightened;
@@ -471,7 +468,7 @@ function fourteen_colors_general_css() {
 			   && fourteen_colors_relative_luminance( $accent_darkened ) > 0 ) {
 			$accent_darkened = fourteen_colors_adjust_color( $accent_darkened, -8 );
 		}
-				
+
 		// Do we acheive higher contrast with the lightened or darkened color?
 		if( fourteen_colors_contrast_ratio( $accent_lightened, $contrast_color ) < fourteen_colors_contrast_ratio( $accent_darkened, $contrast_color ) ) {
 			$accent_color = $accent_darkened;

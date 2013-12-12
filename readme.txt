@@ -11,14 +11,14 @@ License: GPLv2
 Not a big fan of green and black? Love the layout of Twenty Fourteen, but need its colors to match your brand? Don't have time to create a child theme, or want to change up your site's look on a regular basis without technical overhead?
 
 Fourteen Colors is the most efficient way to re-color the Twenty Fourteen theme. It provides two color pickers, which together control:
-- Header/Sidebar/Footer Background Color
-- Featured Content Background Color
-- Link Color
-- Search Bar Color
-- Navigation Menu Hover Colors
-- Text Selection/Highlight Color
-- Audio/Video Player Colorschemes
-- And more...
+* Header/Sidebar/Footer Background Color
+* Featured Content Background Color
+* Link Color
+* Search Bar Color
+* Navigation Menu Hover Colors
+* Text Selection/Highlight Color
+* Audio/Video Player Colorschemes
+* And more...
 
 Fourteen Colors automatically adjusts your color choices to ensure the minimum required contrast to keep Twenty Fourteen accessible-ready, and to keep your site as readable as possible. The plugin is designed to support almost any combination of colors, so you can be creative and express yourself with your site! Please report any issues on the support forums.
 
@@ -83,6 +83,9 @@ All colors are supported except for pure white (#fff), which should technically 
 * Initial pass at an experimental "Contrast Color" option
 
 == Upgrade Notice ==
+= 1.0 =
+* Please visit the customizer and re-set your colors after updating. This plugin is now ready for prime-time!
+
 = 0.2 =
 * Build out the contrast color option.
 

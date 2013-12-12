@@ -126,6 +126,10 @@ function fourteen_colors_contrast_css() {
 			.mejs-overlay .mejs-overlay-button {
 				background-color: ' . $contrast_color . ';
 			}
+
+			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+				background-color: #2b2b2b;
+			}
 		';
 	}
 	else {
@@ -291,8 +295,7 @@ function fourteen_colors_accent_css() {
 				color: #2b2b2b;
 			}
 
-			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded, 
-			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded {
 				background-color: #2b2b2b;
 			}
 

@@ -199,6 +199,10 @@ function fourteen_colors_accent_css() {
 			background-color: ' . $accent_color . ';
 		}
 
+		.site-navigation a:hover {
+			color: ' . $accent_color . ';
+		}
+
 		::-moz-selection {
 			background: ' . $accent_color . ';
 		}
@@ -325,7 +329,6 @@ function fourteen_colors_accent_css() {
 		.search-toggle:hover,
 		.search-toggle.active,
 		.search-box,
-		.site-navigation a:hover,
 		.widget_calendar tbody a:hover,
 		button:hover,
 		button:focus,
@@ -367,7 +370,6 @@ function fourteen_colors_accent_css() {
 		.entry-meta a:hover,
 		.cat-links a:hover,
 		.entry-content .edit-link a:hover,
-		.page-links a:hover,
 		.post-navigation a:hover,
 		.image-navigation a:hover,
 		.comment-author a:hover,
@@ -384,6 +386,7 @@ function fourteen_colors_accent_css() {
 		.page-links a:hover,
 		.paging-navigation a:hover {
 			border-color: ' . $accent_mid_dark . ';
+			background-color: ' . $accent_mid_dark . ';
 		}
 
 		.entry-meta .tag-links a:hover:before {
@@ -488,6 +491,7 @@ function fourteen_colors_general_css() {
 		.site-navigation .current_page_ancestor > a,
 		.site-navigation .current-menu-item > a,
 		.site-navigation .current-menu-ancestor > a,
+		.site-navigation a:hover,
 		.featured-content a:hover,
 		.featured-content .entry-title a:hover,
 		.widget a:hover,

@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 // Only run if theme or parent theme is Twenty Fourteen.
-if ( get_template() != 'twentyfourteen' ) {
+if ( strtolower( get_template() ) != 'twentyfourteen' ) {
 	return;
 }
 

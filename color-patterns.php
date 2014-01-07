@@ -58,6 +58,8 @@ function fourteen_colors_contrast_css() {
 			.secondary-navigation a,
 			.widget,
 			.widget a,
+			.widget-title,
+			.widget-title a,
 			.widget_calendar caption,
 			.site-header a,
 			.site-title a,
@@ -91,10 +93,6 @@ function fourteen_colors_contrast_css() {
 				background-image: url(' . plugins_url( '/pattern-dark-inverse.svg', __FILE__ ) . ');
 			}
 
-			.widget-title, .widget-title a {
-				color: #000;
-			}
-
 			.secondary-navigation li {
 				border-color: rgba(0, 0, 0, .2);
 			}
@@ -105,7 +103,7 @@ function fourteen_colors_contrast_css() {
 
 			.widget input,
 			.widget textarea {
-				background-color: rgba(0, 0, 0, .01);
+				background-color: rgba(0, 0, 0, .02);
 				border-color: rgba(0, 0, 0, .2);
 				color: #000;
 			}

@@ -151,7 +151,7 @@ function fourteen_colors_contrast_css() {
 			}
 		';
 	}
-	
+
 	return $css;
 }
 
@@ -254,7 +254,7 @@ function fourteen_colors_accent_css() {
 			.widget input[type="reset"],
 			.widget input[type="submit"],
 			.widget_calendar tbody a,
-			.widget_calendar tbody a:hover
+			.widget_calendar tbody a:hover,
 			.site-footer .widget_calendar tbody a,
 			.content-sidebar .widget input[type="button"],
 			.content-sidebar .widget input[type="reset"],
@@ -321,7 +321,7 @@ function fourteen_colors_accent_css() {
 		.content-sidebar .widget a {
 			color: ' . $accent_dark . ';
 		}
-		
+
 		.contributor-posts-link:hover,
 		.slider-control-paging a:hover:before,
 		.search-toggle:hover,
@@ -384,13 +384,13 @@ function fourteen_colors_accent_css() {
 		.page-links a:hover,
 		.paging-navigation a:hover {
 			border-color: ' . $accent_mid_dark . ';
-			background-color: ' . $accent_mid_dark . ';
 		}
 
 		.entry-meta .tag-links a:hover:before {
 			border-right-color: ' . $accent_mid_dark . ';
 		}
 
+		.page-links a:hover,
 		.entry-meta .tag-links a:hover {
 			background-color: ' . $accent_mid_dark . ';
 		}

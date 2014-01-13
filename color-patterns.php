@@ -75,10 +75,20 @@ function fourteen_colors_contrast_css() {
 				color: #2b2b2b;
 			}
 
-			.primary-navigation ul ul a,
-			.secondary-navigation ul ul a,
-			.secondary-navigation li:hover > a,
-			.secondary-navigation li.focus > a,
+			@media screen and (min-width: 783px) {
+				.primary-navigation ul ul a {
+					color: #fff;
+				}
+			}
+
+			@media screen and (min-width: 1008px) {
+				.secondary-navigation ul ul a,
+				.secondary-navigation li:hover > a,
+				.secondary-navigation li.focus > a {
+					color: #fff;
+				}
+			}
+
 			.widget_calendar tbody a,
 			.site-footer .widget_calendar tbody a,
 			.slider-direction-nav a:hover:before {

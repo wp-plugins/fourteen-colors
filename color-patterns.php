@@ -103,11 +103,25 @@ function fourteen_colors_contrast_css() {
 				background-image: url(' . plugins_url( '/pattern-dark-inverse.svg', __FILE__ ) . ');
 			}
 
-			.secondary-navigation li {
-				border-color: rgba(0, 0, 0, .2);
-			}
-
-			.secondary-navigation {
+			.site-navigation li,
+			#secondary,
+			.secondary-navigation,
+			.secondary-navigation li,
+			.widget table,
+			.widget th,
+			.widget td,
+			.widget_archive li,
+			.widget_categories li,
+			.widget_links li,
+			.widget_meta li,
+			.widget_nav_menu li,
+			.widget_pages li,
+			.widget_recent_comments li,
+			.widget_recent_entries li,
+			.widget_categories li ul,
+			.widget_nav_menu li ul,
+			.widget_pages li ul,
+			.widget abbr[title] {
 				border-color: rgba(0, 0, 0, .2);
 			}
 

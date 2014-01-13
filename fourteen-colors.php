@@ -48,6 +48,30 @@ function fourteen_colors_load_textdomain() {
 add_action( 'plugins_loaded', 'fourteen_colors_load_textdomain' );
 
 /**
+ * Checks the plugin version and updates the cached CSS if necessary.
+ *
+ * Only runs on admin_init because these CSS updates tend to be less 
+ * important than running the version check on every front-end pageload.
+ *
+ * @since Fourteen Colors 1.0.1
+ *
+ * @return void
+ */
+function fourteen_colors_admin_init() {
+	$fourteen_colors_version = '1.0.1';
+	$db_version = get_option( 'fourteen_colors_version', false );
+
+	if ( false === $db_version || $db_version < $fourteen_colors_version ) {
+		// Build/re-build the Fourteen Colors CSS output.
+		fourteen_colors_rebuild_color_patterns();
+
+		// Update DB version.
+		update_option( 'fourteen_colors_version', $fourteen_colors_version );
+	}
+}
+add_action( 'admin_init', 'fourteen_colors_admin_init' );
+
+/**
  * Add and modify the customizer settings and controls.
  *
  * @since Fourteen Colors 0.1
@@ -123,7 +147,6 @@ function fourteen_colors_styles() {
 	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css', __FILE__ ) );
 }
 add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
-
 
 /**
  * Output all dynamic custom-color CSS.

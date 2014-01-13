@@ -11,7 +11,7 @@
  * License: GPL
 
 =====================================================================================
-Copyright (C) 2013 Nick Halsey
+Copyright (C) 2014 Nick Halsey
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -58,10 +58,10 @@ add_action( 'plugins_loaded', 'fourteen_colors_load_textdomain' );
  * @return void
  */
 function fourteen_colors_admin_init() {
-	$fourteen_colors_version = '1.0.1';
+	$fourteen_colors_version = '1.0';
 	$db_version = get_option( 'fourteen_colors_version', false );
 
-	if ( false === $db_version || $db_version < $fourteen_colors_version ) {
+	if ( false === $db_version || $db_version != $fourteen_colors_version ) {
 		// Build/re-build the Fourteen Colors CSS output.
 		fourteen_colors_rebuild_color_patterns();
 
@@ -80,7 +80,7 @@ add_action( 'admin_init', 'fourteen_colors_admin_init' );
  */
 function fourteen_colors_customize_register( $wp_customize ) {
 	// Tweak the colors section's description.
-	// $wp_customize->get_section( 'colors' )->description = __( 'Accent color includes links, text selection, the header search bar, and more; use vibrant colors for best results. Contrast color includes the header, sidebar, footer, and other details, and represents the visual contrast between the main content area (white) and the rest of the site (black by default).', 'fourteen-colors' );
+	// $wp_customize->get_section( 'colors' )->description = __( 'Accent color includes links, text selection, the header search bar, and more; use vibrant colors for best results. Contrast color includes the header, sidebar, footer, and other details; use muted or grayscale colors for best results.', 'fourteen-colors' );
 
 	// Add the custom accent color setting and control.
 	$wp_customize->add_setting( 'accent_color', array(

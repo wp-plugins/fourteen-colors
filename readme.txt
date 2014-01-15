@@ -11,6 +11,7 @@ License: GPLv2
 Not a big fan of green and black? Love the layout of Twenty Fourteen, but need its colors to match your brand? Don't have time to create a child theme, or want to change up your site's look on a regular basis without technical overhead?
 
 Fourteen Colors is the most efficient way to re-color the Twenty Fourteen theme. It provides two color pickers, which together control:
+
 * Header/Sidebar/Footer Background Color
 * Featured Content Background Color
 * Link Color
@@ -43,7 +44,7 @@ Fourteen Colors is a plugin, not a child theme, because it is primarily programm
 You can use Fourteen Colors with both Twenty Fourteen and child themes. Be aware that the Fourteen Colors settings are stored with the active theme, so if you switch to a child theme or switch child themes, you'll need to re-set your colors. Child theme compatibility depends on the extent of changes made by the child theme.
 
 = Suggested/Recommended Colors =
-The contrast color option tends to work best with colors that are either grayscale or close to grayscale. Try dark light or dark grays in conjunction with any accent color if the default black feels too bold.
+The contrast color option tends to work best with colors that are either grayscale or close to grayscale. Try light or dark grays in conjunction with any accent color if the default black feels too bold.
 
 Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, lighter colors such as yellow do work well, as do darker colors such as black, with a good choice of contrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's already dark) to increase the overall contrast of your site.
 
@@ -57,10 +58,21 @@ All colors are supported except for pure white (#fff), which should technically 
 4. Purple and Pink
 5. Blue and Orange
 6. Gray and Yellow
+7. Red and black
 
 == Changelog ==
+The first two digits of the version number correspond to the version of Twenty Fourteen, while the last digit is the intermediate update number. 1.0.1 is the first update to the plugin for Twenty Fourteen 1.0, 1.1.0 is the initial version of the plugin for Twenty Fourteen 1.1, etc.
+
+= 1.0.1 =
+* Add a description of the different color controls (requires changes that might change the order of the options).
+* Fix paging navigation hover states (border, not background color should change).
+* Darken all borders when using light contrast colors on mobile.
+* Fix sub-menu colors on mobile when using a light contrast color.
+* Automatically refresh the cached plugin output CSS after the plugin has been updated.
+* Hide the site title color control to reduce confusion, since the color is automatically tweaked based on the contrast color. The Header Text Color option is still available via the Appearance -> Header page if it needs to be customized.
+
 = 1.0 =
-* Plugin is ready for general use, alongside Twenty Fourteen 1.0 and WordPress 3.8
+* Plugin is ready for general use, alongside Twenty Fourteen 1.0 and WordPress 3.8.
 
 = 0.7 =
 * Screenshots, finalized documentation.
@@ -79,10 +91,13 @@ All colors are supported except for pure white (#fff), which should technically 
 * Build out of the contrast color option.
 
 = 0.1 =
-* Initial port from the Twenty Fourteen Theme's implementation 
-* Initial pass at an experimental "Contrast Color" option
+* Initial port from the Twenty Fourteen Theme's implementation .
+* Initial pass at an experimental "Contrast Color" option.
 
 == Upgrade Notice ==
+= 1.0.1 =
+* Several bugfixes, particularly with lighter contrast colors on mobile. Cached plugin output is now automatically refreshed after updating.
+
 = 1.0 =
 * Please visit the customizer and re-set your colors after updating. This plugin is now ready for prime-time!
 

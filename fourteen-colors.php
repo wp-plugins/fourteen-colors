@@ -80,7 +80,7 @@ add_action( 'admin_init', 'fourteen_colors_admin_init' );
  */
 function fourteen_colors_customize_register( $wp_customize ) {
 	// Tweak the colors section's description.
-	// $wp_customize->get_section( 'colors' )->description = __( 'Accent color includes links, text selection, the header search bar, and more; use vibrant colors for best results. Contrast color includes the header, sidebar, footer, and other details; use muted or grayscale colors for best results.', 'fourteen-colors' );
+	$wp_customize->get_section( 'colors' )->description = __( 'Accent color includes links, text selection, the header search bar, and more; use vibrant colors for best results. Contrast color includes the header, sidebar, footer, and other details; use muted or grayscale colors for best results. Background may only be visible on wide screens.', 'fourteen-colors' );
 
 	// Add the custom accent color setting and control.
 	$wp_customize->add_setting( 'accent_color', array(
@@ -91,6 +91,7 @@ function fourteen_colors_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
 		'label'    => __( 'Accent Color', 'fourteen-colors' ),
 		'section'  => 'colors',
+		'priority' => '1', // Need to push above Site Title & Background colors because running after theme's built-in options.
 	) ) );
 
 	// Add the custom contrast color setting and control.
@@ -102,11 +103,16 @@ function fourteen_colors_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'contrast_color', array(
 		'label'    => __( 'Contrast Color', 'fourteen-colors' ),
 		'section'  => 'colors',
+		'priority' => '2', // Need to push above Site Title & Background colors because running after theme's built-in options.
 	) ) );
+	
+	// Remove the Site Title Color control; it is confusing because the color is automatically adjusted based on the contrast color.
+	// A custom-set color will still apply and it can still be changed from the Appearance -> Header page.
+	$wp_customize->remove_control( 'header_textcolor' );
 	
 	add_filter( 'theme_mod_fourteen_colors_css', 'fourteen_colors_generate_css' );
 }
-add_action( 'customize_register', 'fourteen_colors_customize_register' );
+add_action( 'customize_register', 'fourteen_colors_customize_register', 11 ); // Needs to run after theme's customize_register so that the colors section's description can be modified.
 
 // Contains functions that generate CSS for all color modification patterns.
 require( 'color-patterns.php' );

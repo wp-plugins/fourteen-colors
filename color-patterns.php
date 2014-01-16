@@ -333,6 +333,45 @@ function fourteen_colors_accent_css() {
 			$accent_dark = fourteen_colors_adjust_color( $accent_dark, -5 );
 		}
 	}
+	else {
+		// Adjustments for dark accent colors. These are mostly specifed by default in Twenty Fourteen, but are insurance.
+		$css .= '
+			.primary-navigation ul ul a,
+			.secondary-navigation ul ul a,
+			.secondary-navigation li:hover > a,
+			.secondary-navigation li.focus > a,
+			.contributor-posts-link,
+			button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"],
+			.search-toggle:before,
+			.mejs-overlay:hover .mejs-overlay-button,
+			.widget button,
+			.widget input[type="button"],
+			.widget input[type="reset"],
+			.widget input[type="submit"],
+			.widget_calendar tbody a,
+			.widget_calendar tbody a:hover,
+			.site-footer .widget_calendar tbody a,
+			.content-sidebar .widget input[type="button"],
+			.content-sidebar .widget input[type="reset"],
+			.content-sidebar .widget input[type="submit"],
+			button:hover,
+			button:focus,
+			.contributor-posts-link:hover,
+			.contributor-posts-link:active,
+			input[type="button"]:hover,
+			input[type="button"]:focus,
+			input[type="reset"]:hover,
+			input[type="reset"]:focus,
+			input[type="submit"]:hover,
+			input[type="submit"]:focus,
+			.slider-direction-nav a:hover:before {
+				color: #fff;
+			}
+		';
+	}
 	
 	// Base some color variants off of the potentially darkened color.
 	$accent_mid = fourteen_colors_adjust_color( $accent_color, 29);

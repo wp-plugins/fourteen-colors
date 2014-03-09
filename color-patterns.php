@@ -262,10 +262,6 @@ function fourteen_colors_accent_css() {
 		fourteen_colors_contrast_ratio( $accent_color, '#fff' ) < fourteen_colors_contrast_ratio( $accent_color, '#2b2b2b' ) ) {
 
 		$css .= '
-			.primary-navigation ul ul a,
-			.secondary-navigation ul ul a,
-			.secondary-navigation li:hover > a,
-			.secondary-navigation li.focus > a,
 			.contributor-posts-link,
 			button,
 			input[type="button"],
@@ -298,6 +294,7 @@ function fourteen_colors_accent_css() {
 			}
 
 			@media screen and (min-width: 782px) {
+				.primary-navigation ul ul a,
 				.primary-navigation li:hover > a,
 				.primary-navigation li.focus > a,
 				.primary-navigation ul ul {
@@ -306,6 +303,7 @@ function fourteen_colors_accent_css() {
 			}
 
 			@media screen and (min-width: 1008px) {
+				.secondary-navigation ul ul a,
 				.secondary-navigation li:hover > a,
 				.secondary-navigation li.focus > a,
 				.secondary-navigation ul ul {
@@ -336,10 +334,6 @@ function fourteen_colors_accent_css() {
 	else {
 		// Adjustments for dark accent colors. These are mostly specifed by default in Twenty Fourteen, but are insurance.
 		$css .= '
-			.primary-navigation ul ul a,
-			.secondary-navigation ul ul a,
-			.secondary-navigation li:hover > a,
-			.secondary-navigation li.focus > a,
 			.contributor-posts-link,
 			button,
 			input[type="button"],
@@ -370,9 +364,27 @@ function fourteen_colors_accent_css() {
 			.slider-direction-nav a:hover:before {
 				color: #fff;
 			}
+
+			@media screen and (min-width: 782px) {
+				.primary-navigation ul ul a,
+				.primary-navigation li:hover > a,
+				.primary-navigation li.focus > a,
+				.primary-navigation ul ul {
+					color: #fff;
+				}
+			}
+
+			@media screen and (min-width: 1008px) {
+				.secondary-navigation ul ul a,
+				.secondary-navigation li:hover > a,
+				.secondary-navigation li.focus > a,
+				.secondary-navigation ul ul {
+					color: #fff;
+				}
+			}
 		';
 	}
-	
+
 	// Base some color variants off of the potentially darkened color.
 	$accent_mid = fourteen_colors_adjust_color( $accent_color, 29);
 	$accent_mid_dark = fourteen_colors_adjust_color( $accent_dark, 29);

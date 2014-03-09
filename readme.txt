@@ -1,6 +1,6 @@
 === Fourteen Colors ===
 Contributors: celloexpressions
-Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Theme Customizer, Twenty Fourteen Theme, Default Theme, 2014
+Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Theme Customizer, Twenty Fourteen Theme, Default Theme, Bundled Theme, 2014
 Requires at least: 3.8
 Tested up to: 3.8
 Stable tag: 1.0.1
@@ -63,6 +63,13 @@ All colors are supported except for pure white (#fff), which should technically 
 == Changelog ==
 The first two digits of the version number correspond to the version of Twenty Fourteen, while the last digit is the intermediate update number. 1.0.1 is the first update to the plugin for Twenty Fourteen 1.0, 1.1.0 is the initial version of the plugin for Twenty Fourteen 1.1, etc.
 
+= 1.0.2 =
+* Fix bugs with mobile navigation menus with certain color combinations.
+* Add support for the `.button` class introduced in Twenty Fourteen 1.1 / WordPress 3.9.
+* Fix link and border color in Twenty Fourteen Ephemera widgets when used in the Primary and Footer widget areas with a light contrast color.
+* Override the Site Title option, as it is hidden from the Theme Customizer (since Fourteen Colors automatically adjusts it for contrast).
+* Add basic support for IE8, which is handled differently in Twenty Fourteen due to its lack of support for modern standards.
+
 = 1.0.1 =
 * Add a description of the different color controls (requires changes that might change the order of the options).
 * Fix paging navigation hover states (border, not background color should change).
@@ -95,6 +102,9 @@ The first two digits of the version number correspond to the version of Twenty F
 * Initial pass at an experimental "Contrast Color" option.
 
 == Upgrade Notice ==
+= 1.0.2 =
+* Bugfixes for mobile & IE8 nav menus, edge cases, and support for the .button CSS class coming in Twentty Fourteen 1.1.
+
 = 1.0.1 =
 * Several bugfixes, particularly with lighter contrast colors on mobile. Cached plugin output is now automatically refreshed after updating.
 

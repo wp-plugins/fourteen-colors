@@ -23,7 +23,7 @@ function fourteen_colors_contrast_css() {
 	if ( '#000000' === $contrast_color ) {
 		return '';
 	}
-	
+
 	// Add the CSS for implementing the contrast color.
 	$css = '/* Custom Contrast Color */
 		.site:before,
@@ -32,24 +32,27 @@ function fourteen_colors_contrast_css() {
 		.site-footer,
 		.featured-content,
 		.featured-content .entry-header,
-		.slider-direction-nav a {
+		.slider-direction-nav a,
+		.ie8 .featured-content,
+		.ie8 .site:before {
 			background-color: ' . $contrast_color . ';
 		}
-		
-		.grid .featured-content .entry-header {
+
+		.grid .featured-content .entry-header,
+		.ie8 .grid .featured-content .entry-header {
 			border-color: ' . $contrast_color . ';
 		}
-		
+
 		.slider-control-paging a:before {
 			background-color: rgba(255,255,255,.33);
 		}
-		
+
 		.hentry .mejs-mediaelement,
 		.hentry .mejs-container .mejs-controls {
 			background: ' . $contrast_color . ';
 		}
 	';
-	
+
 	// Adjustents to make lighter Contrast Colors looks just as good.
 	if ( fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < 4.5 &&
 		fourteen_colors_contrast_ratio( $contrast_color, '#fff' ) < fourteen_colors_contrast_ratio( $contrast_color, '#2b2b2b' ) ) {

@@ -98,7 +98,7 @@ function fourteen_colors_contrast_css() {
 			.slider-control-paging a:before {
 				background-color: rgba(0, 0, 0, .33);
 			}
-			
+
 			.featured-content {
 				background-image: url(' . plugins_url( '/pattern-dark-inverse.svg', __FILE__ ) . ');
 			}
@@ -136,15 +136,19 @@ function fourteen_colors_contrast_css() {
 				border-color: rgba(0, 0, 0, 0.4);
 			}
 
+			.widget_twentyfourteen_ephemera .entry-meta a {
+				color: rgba(0, 0, 0, 0.7);
+			}
+
 			#supplementary + .site-info {
 				border-top: 1px solid rgba(0, 0, 0, 0.2);
 			}
-			
+
 			.hentry .mejs-controls .mejs-time-rail .mejs-time-total, 
 			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
 				background: rgba(0,0,0,.3);
 			}
-			
+
 			.mejs-overlay .mejs-overlay-button {
 				background-color: ' . $contrast_color . ';
 			}

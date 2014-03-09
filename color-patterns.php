@@ -236,7 +236,13 @@ function fourteen_colors_accent_css() {
 		.content-sidebar .widget input[type="submit"],
 		.slider-control-paging .slider-active:before,
 		.slider-control-paging .slider-active:hover:before,
-		.slider-direction-nav a:hover {
+		.slider-direction-nav a:hover,
+		.ie8 .primary-navigation ul ul,
+		.ie8 .secondary-navigation ul ul,
+		.ie8 .primary-navigation li:hover > a,
+		.ie8 .primary-navigation li.focus > a,
+		.ie8 .secondary-navigation li:hover > a,
+		.ie8 .secondary-navigation li.focus > a {
 			background-color: ' . $accent_color . ';
 		}
 
@@ -311,7 +317,11 @@ function fourteen_colors_accent_css() {
 			input[type="reset"]:focus,
 			input[type="submit"]:hover,
 			input[type="submit"]:focus,
-			.slider-direction-nav a:hover:before {
+			.slider-direction-nav a:hover:before,
+			.ie8 .primary-navigation li:hover > a,
+			.ie8 .primary-navigation li.focus > a,
+			.ie8 .secondary-navigation li:hover > a,
+			.ie8 .secondary-navigation li.focus > a {
 				color: #2b2b2b;
 			}
 
@@ -449,7 +459,11 @@ function fourteen_colors_accent_css() {
 		.content-sidebar .widget input[type="reset"]:hover,
 		.content-sidebar .widget input[type="reset"]:focus,
 		.content-sidebar .widget input[type="submit"]:hover,
-		.content-sidebar .widget input[type="submit"]:focus {
+		.content-sidebar .widget input[type="submit"]:focus,
+		.ie8 .primary-navigation ul ul a:hover,
+		.ie8 .primary-navigation ul ul li.focus > a,
+		.ie8 .secondary-navigation ul ul a:hover,
+		.ie8 .secondary-navigation ul ul li.focus > a {
 			background-color: ' . $accent_mid . ';
 		}
 

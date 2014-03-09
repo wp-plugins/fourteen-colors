@@ -156,6 +156,11 @@ function fourteen_colors_contrast_css() {
 			.hentry .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
 				background-color: #2b2b2b;
 			}
+
+			/* Override the site title color option with an over-qualified selector, as the option is hidden. */
+			h1.site-title a {
+				color: #2b2b2b;
+			}
 		';
 	}
 	else {
@@ -176,6 +181,11 @@ function fourteen_colors_contrast_css() {
 			.paging-navigation a:hover,
 			.paging-navigation a {
 				color: ' . $contrast_color . ';
+			}
+
+			/* Override the site title color option with an over-qualified selector, as the option is hidden. */
+			h1.site-title a {
+				color: #fff;
 			}
 		';
 	}

@@ -200,6 +200,7 @@ function fourteen_colors_accent_css() {
 	$css = '
 		/* Custom accent color. */
 		button,
+		.button,
 		.contributor-posts-link,
 		input[type="button"],
 		input[type="reset"],
@@ -263,6 +264,7 @@ function fourteen_colors_accent_css() {
 
 		$css .= '
 			.contributor-posts-link,
+			.button,
 			button,
 			input[type="button"],
 			input[type="reset"],
@@ -281,6 +283,8 @@ function fourteen_colors_accent_css() {
 			.content-sidebar .widget input[type="submit"],
 			button:hover,
 			button:focus,
+			.button:hover,
+			.button:focus,
 			.contributor-posts-link:hover,
 			.contributor-posts-link:active,
 			input[type="button"]:hover,
@@ -336,6 +340,7 @@ function fourteen_colors_accent_css() {
 		$css .= '
 			.contributor-posts-link,
 			button,
+			.button,
 			input[type="button"],
 			input[type="reset"],
 			input[type="submit"],
@@ -353,6 +358,8 @@ function fourteen_colors_accent_css() {
 			.content-sidebar .widget input[type="submit"],
 			button:hover,
 			button:focus,
+			.button:hover,
+			.button:focus,
 			.contributor-posts-link:hover,
 			.contributor-posts-link:active,
 			input[type="button"]:hover,
@@ -398,6 +405,8 @@ function fourteen_colors_accent_css() {
 		}
 
 		.contributor-posts-link:hover,
+		.button:hover,
+		.button:focus,
 		.slider-control-paging a:hover:before,
 		.search-toggle:hover,
 		.search-toggle.active,
@@ -485,6 +494,7 @@ function fourteen_colors_accent_css() {
 		}
 
 		button:active,
+		.button:active,
 		.contributor-posts-link:active,
 		input[type="button"]:active,
 		input[type="reset"]:active,

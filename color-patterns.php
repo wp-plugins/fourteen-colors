@@ -140,6 +140,10 @@ function fourteen_colors_contrast_css() {
 				color: rgba(0, 0, 0, 0.7);
 			}
 
+			.widget_twentyfourteen_ephemera > ol > li {
+				border-bottom-color: rgba(0, 0, 0, 0.2);
+			}
+
 			#supplementary + .site-info {
 				border-top: 1px solid rgba(0, 0, 0, 0.2);
 			}

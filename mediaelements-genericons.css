@@ -27,10 +27,6 @@
 	left: 10px;
 }
 
-.hentry .mejs-controls .mejs-button button:focus {
-	outline: none;
-}
-
 .hentry .mejs-controls .mejs-button button {
 	-webkit-font-smoothing: antialiased;
 	background: none;

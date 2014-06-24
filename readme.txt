@@ -1,16 +1,16 @@
 === Fourteen Colors ===
 Contributors: celloexpressions
-Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Theme Customizer, Twenty Fourteen Theme, Default Theme, Bundled Theme, 2014
+Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Customizer, Theme Customizer, Twenty Fourteen Theme, Default Theme, Bundled Theme, 2014
 Requires at least: 3.8
 Tested up to: 3.9
 Stable tag: 1.0.2
-Description: Customize the colors of the Twenty Fourteen Theme, directly within the Theme Customizer.
+Description: Customize the colors of the Twenty Fourteen Theme, directly within the Customizer.
 License: GPLv2
 
 == Description ==
 Not a big fan of green and black? Love the layout of Twenty Fourteen, but need its colors to match your brand? Don't have time to create a child theme, or want to change up your site's look on a regular basis without technical overhead?
 
-Fourteen Colors is the most efficient way to re-color the Twenty Fourteen theme. It provides two color pickers, which together control:
+Fourteen Colors is the most *efficient* way to re-color the Twenty Fourteen theme. It provides two color pickers, which together control:
 
 * Header/Sidebar/Footer Background Color
 * Featured Content Background Color
@@ -21,17 +21,17 @@ Fourteen Colors is the most efficient way to re-color the Twenty Fourteen theme.
 * Audio/Video Player Colorschemes
 * And more...
 
-Fourteen Colors automatically adjusts your color choices to ensure the minimum required contrast to keep Twenty Fourteen accessible-ready, and to keep your site as readable as possible. The plugin is designed to support almost any combination of colors, so you can be creative and express yourself with your site! Please report any issues on the support forums.
+Fourteen Colors automatically adjusts your color choices to ensure the minimum required contrast to keep Twenty Fourteen accessible-ready, and to keep your site as readable as possible. The plugin is designed to support almost any combination of colors, so you can be creative and express yourself with your site! Please report any issues on the support forums, after reading the FAQ and the changelog to see if they address your question.
 
-The Accent Color feature was originally developed in Twenty Fourteen core, but it was removed near the end of the development cycle due to a variety of concerns. This plugin addresses those concerns and adds the contrast color feature to enable a broad range of custom colorschemes.
+The Accent Color feature was originally developed in Twenty Fourteen core, but it was removed near the end of the initial development cycle due to a variety of concerns. This plugin addresses those concerns and adds the contrast color feature to enable a broad range of custom colorschemes.
 
-Special thanks to the entire Twenty Fourteen team for developing the accent color throughout the development cycle. This plugin (and Twenty Fourteen) would not exist without their hard work and attention to detail.
+Special thanks to the entire Twenty Fourteen team for their work on the accent color throughout the development cycle. This plugin (and Twenty Fourteen) would not exist without their hard work and attention to detail.
 
 == Installation ==
 1. Take the easy route and install through the WordPress plugin adder OR
 1. Download the .zip file and upload the unzipped folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to the Theme Customizer (Appearance -> Customize) and adjust the two new color pickers under the "Colors" heading to your liking
+1. Go to the Customizer (Appearance -> Customize) and adjust the two new color pickers under the "Colors" heading to your liking
 
 
 == Frequently Asked Questions ==
@@ -48,6 +48,11 @@ The contrast color option tends to work best with colors that are either graysca
 
 Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, lighter colors such as yellow do work well, as do darker colors such as black, with a good choice of contrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's already dark) to increase the overall contrast of your site.
 
+= Known Issues =
+Due to the automatic generation of secondary colors, in order to maximize color contrast ratios, undesirable colors may come up in some places. You can override these with custom CSS, and feel free to post in the support forums if you can't figure it out (but search there first).
+
+Please note that if you're having trouble getting the plugin to "work" it is extremely likely that you're doing something wrong.
+
 = Supported Colors =
 All colors are supported except for pure white (#fff), which should technically work but results in a poor user experience due to the lack of contrast, which helps to provide visual hierarchy. Pure black (#000) accent colors are more fully supported, but can also have (less significant) issues with providing proper visual hierarchy.
 
@@ -62,6 +67,12 @@ All colors are supported except for pure white (#fff), which should technically 
 
 == Changelog ==
 The first two digits of the version number correspond to the version of Twenty Fourteen, while the last digit is the intermediate update number. 1.0.1 is the first update to the plugin for Twenty Fourteen 1.0, 1.1.0 is the initial version of the plugin for Twenty Fourteen 1.1, etc.
+
+= 1.1 =
+* Full support for Twenty Fourteen 1.1.
+* Fix mobile menu-toggle button colors.
+* Fix support for button-styled links in widgets (via the `.button` class).
+* Add a filter to the version of the accent color that contrasts with the white page background, facillitating the ability to override the automatically-generated version with another color picker via an add-on plugin.
 
 = 1.0.2 =
 * Fix bugs with mobile navigation menus with certain color combinations.
@@ -102,6 +113,9 @@ The first two digits of the version number correspond to the version of Twenty F
 * Initial pass at an experimental "Contrast Color" option.
 
 == Upgrade Notice ==
+= 1.1 =
+* Minor fixes for Twenty Fourteen 1.1 compatibility, add a filter for the generated main link color.
+
 = 1.0.2 =
 * Bugfixes for mobile & IE8 nav menus, edge cases, and support for the .button CSS class coming in Twentty Fourteen 1.1.
 

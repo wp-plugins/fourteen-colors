@@ -377,6 +377,15 @@ function fourteen_colors_accent_css() {
 		while( fourteen_colors_contrast_ratio( $accent_dark, '#fff' ) < 4.5 ) {
 			$accent_dark = fourteen_colors_adjust_color( $accent_dark, -5 );
 		}
+
+		/**
+		 * Filter the generated dark variant of the Accent Color.
+		 *
+		 * @since Fourteen Colors 1.1
+		 *
+		 * @param string $accent_dark The generated version of the accent color that has a minimum 4.5:1 contrast ratio with white.
+		 */
+		$accent_dark = apply_filters( 'fourteen_colors_accent_dark', $accent_dark );
 	}
 	else {
 		// Adjustments for dark accent colors. These are mostly specifed by default in Twenty Fourteen, but are insurance.

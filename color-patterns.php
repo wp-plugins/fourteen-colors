@@ -30,6 +30,7 @@ function fourteen_colors_contrast_css() {
 		#secondary,
 		.site-header,
 		.site-footer,
+		.menu-toggle,
 		.featured-content,
 		.featured-content .entry-header,
 		.slider-direction-nav a,
@@ -196,6 +197,15 @@ function fourteen_colors_contrast_css() {
 			}
 		';
 	}
+
+	// Modified Contrast Color.
+	$contrast_light = fourteen_colors_adjust_color( $contrast_color, 68 );
+	$css .= '
+		.menu-toggle:active,
+		.menu-toggle:focus,
+		.menu-toggle:hover {
+			background-color: ' . $contrast_light . ';
+		}';
 
 	return $css;
 }
@@ -394,6 +404,13 @@ function fourteen_colors_accent_css() {
 			button:focus,
 			.button:hover,
 			.button:focus,
+			.widget a.button:hover,
+			.widget a.button:focus,
+			.widget a.button:active,
+			.content-sidebar .widget a.button,
+			.content-sidebar .widget a.button:hover,
+			.content-sidebar .widget a.button:focus,
+			.content-sidebar .widget a.button:active,
 			.contributor-posts-link:hover,
 			.contributor-posts-link:active,
 			input[type="button"]:hover,

@@ -3,7 +3,7 @@
  * Plugin Name: Fourteen Colors
  * Plugin URI: http://celloexpressions.com/plugins/fourteen-colors
  * Description: Customize the colors of the Twenty Fourteen Theme, directly within the Theme Customizer.
- * Version: 1.0.2
+ * Version: 1.1
  * Author: Nick Halsey
  * Author URI: http://celloexpressions.com/
  * Tags: Twenty Fourteen, Colors, Customizer, Custom Colors, Theme Colors
@@ -58,7 +58,7 @@ add_action( 'plugins_loaded', 'fourteen_colors_load_textdomain' );
  * @return void
  */
 function fourteen_colors_admin_init() {
-	$fourteen_colors_version = '1.0.2';
+	$fourteen_colors_version = '1.1';
 	$db_version = get_option( 'fourteen_colors_version', false );
 
 	if ( false === $db_version || $db_version != $fourteen_colors_version ) {

@@ -142,18 +142,6 @@ $fourteen_colors_theme = get_stylesheet();
 add_action( "update_option_theme_mods_$fourteen_colors_theme", 'fourteen_colors_rebuild_color_patterns' );
 
 /**
- * Enqueue standalone CSS components/files.
- *
- * @since Fourteen Colors 0.5
- *
- * @return void
- */
-function fourteen_colors_styles() {
-	wp_enqueue_style( 'fourteen-colors-mediaelements', plugins_url( '/mediaelements-genericons.css', __FILE__ ) );
-}
-add_action( 'wp_enqueue_scripts', 'fourteen_colors_styles' );
-
-/**
  * Output all dynamic custom-color CSS.
  *
  * @since Fourteen Colors 0.5

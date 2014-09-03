@@ -50,7 +50,7 @@ add_action( 'plugins_loaded', 'fourteen_colors_load_textdomain' );
 /**
  * Checks the plugin version and updates the cached CSS if necessary.
  *
- * Only runs on admin_init because these CSS updates tend to be less 
+ * Only runs on admin_init because these CSS updates tend to be less
  * important than running the version check on every front-end pageload.
  *
  * @since Fourteen Colors 1.0.1
@@ -79,9 +79,6 @@ add_action( 'admin_init', 'fourteen_colors_admin_init' );
  * @return void
  */
 function fourteen_colors_customize_register( $wp_customize ) {
-	// Tweak the colors section's description.
-	$wp_customize->get_section( 'colors' )->description = __( 'Accent color includes links, text selection, the header search bar, and more; use vibrant colors for best results. Contrast color includes the header, sidebar, footer, and other details; use muted or grayscale colors for best results. Background may only be visible on wide screens.', 'fourteen-colors' );
-
 	// Add the custom accent color setting and control.
 	$wp_customize->add_setting( 'accent_color', array(
 		'default'           => '#24890d',
@@ -89,9 +86,10 @@ function fourteen_colors_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'accent_color', array(
-		'label'    => __( 'Accent Color', 'fourteen-colors' ),
-		'section'  => 'colors',
-		'priority' => '1', // Need to push above Site Title & Background colors because running after theme's built-in options.
+		'label'       => __( 'Accent Color', 'fourteen-colors' ),
+		'description' => __( 'Includes links, text selection, the header search bar, and more; use vibrant colors for best results.', 'fourteen-colors' ),
+		'section'     => 'colors',
+		'priority'    => '1', // Need to push above Site Title & Background colors because running after theme's built-in options.
 	) ) );
 
 	// Add the custom contrast color setting and control.
@@ -101,15 +99,16 @@ function fourteen_colors_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'contrast_color', array(
-		'label'    => __( 'Contrast Color', 'fourteen-colors' ),
-		'section'  => 'colors',
-		'priority' => '2', // Need to push above Site Title & Background colors because running after theme's built-in options.
+		'label'       => __( 'Contrast Color', 'fourteen-colors' ),
+		'description' => __( 'Header, sidebar, footer, and other details; use muted or grayscale colors for best results.', 'fouteen-colors' ),
+		'section'     => 'colors',
+		'priority'    => '2', // Need to push above Site Title & Background colors because running after theme's built-in options.
 	) ) );
-	
+
 	// Remove the Site Title Color control; it is confusing because the color is automatically adjusted based on the contrast color.
 	// A custom-set color will still apply and it can still be changed from the Appearance -> Header page.
 	$wp_customize->remove_control( 'header_textcolor' );
-	
+
 	add_filter( 'theme_mod_fourteen_colors_css', 'fourteen_colors_generate_css' );
 }
 add_action( 'customize_register', 'fourteen_colors_customize_register', 11 ); // Needs to run after theme's customize_register so that the colors section's description can be modified.

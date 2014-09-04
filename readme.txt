@@ -3,7 +3,7 @@ Contributors: celloexpressions
 Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Customizer, Theme Customizer, Twenty Fourteen Theme, Default Theme, Bundled Theme, 2014
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.1
+Stable tag: 1.2
 Description: Customize the colors of the Twenty Fourteen Theme, directly within the Customizer.
 License: GPLv2
 

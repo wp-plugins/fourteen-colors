@@ -2,7 +2,7 @@
 Contributors: celloexpressions
 Tags: Twenty Fourteen, Custom Colors, Custom, Colors, Customizer, Theme Customizer, Twenty Fourteen Theme, Default Theme, Bundled Theme, 2014
 Requires at least: 3.8
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 1.1
 Description: Customize the colors of the Twenty Fourteen Theme, directly within the Customizer.
 License: GPLv2
@@ -41,17 +41,17 @@ Don't. There is a known bug where the plugin may be applied to other themes when
 = Child Themes =
 Fourteen Colors is a plugin, not a child theme, because it is primarily programmatic (ie, it would only consist of a functions.php file), and for flexibility.
 
-You can use Fourteen Colors with both Twenty Fourteen and child themes. Be aware that the Fourteen Colors settings are stored with the active theme, so if you switch to a child theme or switch child themes, you'll need to re-set your colors. Child theme compatibility depends on the extent of changes made by the child theme.
+You can use Fourteen Colors with both Twenty Fourteen and child themes. Be aware that the Fourteen Colors settings are stored with the active theme, so if you switch to a child theme or switch child themes, you'll need to re-set your colors. Child theme compatibility depends on the extent of changes made by the child theme. But child theme developers can hook into Fourteen Colors to extend it to adapt to their changes, allowing the plugin to work seamlessly even if the child theme is significantly different than the parent theme.
 
 = Suggested/Recommended Colors =
 The contrast color option tends to work best with colors that are either grayscale or close to grayscale. Try light or dark grays in conjunction with any accent color if the default black feels too bold.
 
-Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, lighter colors such as yellow do work well, as do darker colors such as black, with a good choice of contrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's already dark) to increase the overall contrast of your site.
+Accent colors work best when they are intense, fully saturated colors that avoid anything too light or too dark. However, brighter colors such as yellow do work well, as do darker colors such as black, with a good choice of contrast color. If a particular set of colors feels close, but not quite right, try making the accent color more intense and making the contrast color lighter (if it's already light) or darker (if it's already dark) to increase the overall contrast of your site.
 
 = Known Issues =
 Due to the automatic generation of secondary colors, in order to maximize color contrast ratios, undesirable colors may come up in some places. You can override these with custom CSS, and feel free to post in the support forums if you can't figure it out (but search there first).
 
-Please note that if you're having trouble getting the plugin to "work" it is extremely likely that you're doing something wrong.
+Please note that if you're having trouble getting the plugin to "work" it is extremely likely that you're doing something wrong. Don't forget that the color options are added to the Customizer.
 
 = Supported Colors =
 All colors are supported except for pure white (#fff), which should technically work but results in a poor user experience due to the lack of contrast, which helps to provide visual hierarchy. Pure black (#000) accent colors are more fully supported, but can also have (less significant) issues with providing proper visual hierarchy.
@@ -66,7 +66,14 @@ All colors are supported except for pure white (#fff), which should technically 
 7. Red and black
 
 == Changelog ==
-The first two digits of the version number correspond to the version of Twenty Fourteen, while the last digit is the intermediate update number. 1.0.1 is the first update to the plugin for Twenty Fourteen 1.0, 1.1.0 is the initial version of the plugin for Twenty Fourteen 1.1, etc.
+The first two digits of the version number correspond to the version of Twenty Fourteen, while the last digit is the intermediate update number. 1.0.1 is the first update to the plugin for Twenty Fourteen 1.0, 1.1 is the initial version of the plugin for Twenty Fourteen 1.1, etc.
+
+= 1.2 =
+* Updates for WordPress 4.0 / Twenty Fourteen 1.2. Please update those before updating Fourteen Colors.
+* The mediaelements-genericons component, which facilitated audio/video player color-scheming, has been merged into Twenty Fourteen core.
+* Added two new filters to adjust the plugin's output CSS: `fourteen_colors_contrast_css` and `fourteen_colors_accent_css`.
+* Leverage some of the Customizer API improvements in WordPress 4.0.
+* Fix a couple of really minor, obscure bugs that surfaced in the wild.
 
 = 1.1 =
 * Full support for Twenty Fourteen 1.1.
@@ -109,10 +116,13 @@ The first two digits of the version number correspond to the version of Twenty F
 * Build out of the contrast color option.
 
 = 0.1 =
-* Initial port from the Twenty Fourteen Theme's implementation .
+* Initial port from the Twenty Fourteen Theme's implementation.
 * Initial pass at an experimental "Contrast Color" option.
 
 == Upgrade Notice ==
+= 1.2 =
+* Compatible with WordPress 4.0 and Twenty Fourteen 1.2, adds more filters.
+
 = 1.1 =
 * Minor fixes for Twenty Fourteen 1.1 compatibility, add a filter for the generated main link color.
 
@@ -123,7 +133,7 @@ The first two digits of the version number correspond to the version of Twenty F
 * Several bugfixes, particularly with lighter contrast colors on mobile. Cached plugin output is now automatically refreshed after updating.
 
 = 1.0 =
-* Please visit the customizer and re-set your colors after updating. This plugin is now ready for prime-time!
+* Please visit the Customizer and re-set your colors after updating. This plugin is now ready for prime-time!
 
 = 0.2 =
 * Build out the contrast color option.

@@ -353,6 +353,10 @@ function fourteen_colors_accent_css() {
 			}
 
 			@media screen and (min-width: 782px) {
+				.site-navigation li .current_page_item > a,
+				.site-navigation li .current_page_ancestor > a,
+				.site-navigation li .current-menu-item > a,
+				.site-navigation li .current-menu-ancestor > a,
 				.primary-navigation ul ul a,
 				.primary-navigation li:hover > a,
 				.primary-navigation li.focus > a,

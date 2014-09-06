@@ -89,7 +89,7 @@ function fourteen_colors_customize_register( $wp_customize ) {
 		'label'       => __( 'Accent Color', 'fourteen-colors' ),
 		'description' => __( 'Includes links, text selection, the header search bar, and more; use vibrant colors for best results.', 'fourteen-colors' ),
 		'section'     => 'colors',
-		'priority'    => '1', // Need to push above Site Title & Background colors because running after theme's built-in options.
+		'priority'    => 1, // Need to push above Site Title & Background colors because running after theme's built-in options.
 	) ) );
 
 	// Add the custom contrast color setting and control.
@@ -102,7 +102,7 @@ function fourteen_colors_customize_register( $wp_customize ) {
 		'label'       => __( 'Contrast Color', 'fourteen-colors' ),
 		'description' => __( 'Header, sidebar, footer, and other details; use muted or grayscale colors for best results.', 'fouteen-colors' ),
 		'section'     => 'colors',
-		'priority'    => '2', // Need to push above Site Title & Background colors because running after theme's built-in options.
+		'priority'    => 3, // Need to push above Site Title & Background colors because running after theme's built-in options.
 	) ) );
 
 	// Remove the Site Title Color control; it is confusing because the color is automatically adjusted based on the contrast color.
@@ -115,6 +115,9 @@ add_action( 'customize_register', 'fourteen_colors_customize_register', 11 ); //
 
 // Contains functions that generate CSS for all color modification patterns.
 require( 'color-patterns.php' );
+
+// Link color component that conditionally activates UI when it may be useful.
+require( 'component-link-color.php' );
 
 /**
  * Returns the CSS output of Fourteen Colors.

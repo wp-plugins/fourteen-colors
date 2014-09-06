@@ -3,7 +3,13 @@
  * Link color component for the Fourteen Colors plugin.
  */
 
-add_action( 'customize_register', 'fourteen_colors_link_register' );
+/**
+ * Register a setting and a contextual control for links.
+ *
+ * @since Fourteen Colors 1.2.1
+ *
+ * @return void
+ */
 function fourteen_colors_link_register( $wp_customize ) {
 	// Add a setting. This isn't conditional, of course.
 	$wp_customize->add_setting( 'link_color', array(
@@ -22,9 +28,18 @@ function fourteen_colors_link_register( $wp_customize ) {
 		)
 	) );
 }
+add_action( 'customize_register', 'fourteen_colors_link_register' );
 
-// Return true if we should show the link color option, false otherwise.
-// This option should only be available if the chosen color doesn't contrast well with white backgrounds.
+/**
+ * Determine whether or not to show the link color option.
+ *
+ * Return true if we should show the link color option, false otherwise.
+ * This option should only be available if the chosen color doesn't contrast well with white backgrounds.
+ *
+ * @since Fourteen Colors 1.2.1
+ *
+ * @return bool
+ */
 function fourteen_colors_maybe_do_link_option() {
 	$accent_color = get_theme_mod( 'accent_color', '#24890d' );
 	if ( '#24890d' === 'accent_color' ) {
@@ -38,15 +53,21 @@ function fourteen_colors_maybe_do_link_option() {
 	}
 }
 
-// @todo only do the output if the value is customized... maybe check if it's different than the (original) accent color? Probably need to do more.
-// Add the custom link color CSS to Fourteen Colors' output of needed.
-add_filter( 'fourteen_colors_accent_dark', 'fourteen_colors_filter_link_color' );
+/**
+ * Add the custom link color CSS to Fourteen Colors' output if needed.
+ *
+ * @since Fourteen Colors 1.2.1
+ *
+ * @return void
+ */
 function fourteen_colors_filter_link_color( $color ) {
 	if ( ! fourteen_colors_maybe_do_link_option() ) {
 		return $color;
 	} else {
+	// @todo only do the output if the value is customized... maybe check if it's different than the (original) accent color? Probably need to do more.
 		$link_color = get_theme_mod( 'link_color', get_theme_mod( 'accent_color', '#24890d' ) );
-		
+
 		return $link_color;
 	}
 }
+add_filter( 'fourteen_colors_accent_dark', 'fourteen_colors_filter_link_color' );
